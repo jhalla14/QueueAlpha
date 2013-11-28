@@ -22,6 +22,7 @@
 		F0917A1A1847DD1E00AF308F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F91847DD1D00AF308F /* UIKit.framework */; };
 		F0917A221847DD1E00AF308F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0917A201847DD1E00AF308F /* InfoPlist.strings */; };
 		F0917A241847DD1E00AF308F /* QueueAlphaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A231847DD1E00AF308F /* QueueAlphaTests.m */; };
+		F0917A2F1847DEE000AF308F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A2E1847DEE000AF308F /* Player.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		F0917A1F1847DD1E00AF308F /* QueueAlphaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QueueAlphaTests-Info.plist"; sourceTree = "<group>"; };
 		F0917A211847DD1E00AF308F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F0917A231847DD1E00AF308F /* QueueAlphaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueueAlphaTests.m; sourceTree = "<group>"; };
+		F0917A2D1847DEE000AF308F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		F0917A2E1847DEE000AF308F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 		F09179E91847DD1D00AF308F = {
 			isa = PBXGroup;
 			children = (
+				F0917A2D1847DEE000AF308F /* Player.h */,
+				F0917A2E1847DEE000AF308F /* Player.m */,
 				F09179FB1847DD1D00AF308F /* QueueAlpha */,
 				F0917A1D1847DD1E00AF308F /* QueueAlphaTests */,
 				F09179F41847DD1D00AF308F /* Frameworks */,
@@ -258,6 +263,7 @@
 				F0917A061847DD1D00AF308F /* AppDelegate.m in Sources */,
 				F0917A0C1847DD1D00AF308F /* FirstViewController.m in Sources */,
 				F0917A021847DD1D00AF308F /* main.m in Sources */,
+				F0917A2F1847DEE000AF308F /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
