@@ -6,13 +6,17 @@
 //  Copyright (c) 2013 Queue. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+#import "Table.h"
+
 
 @interface Player : NSObject
 
-@property (nonatomic, retain) NSString *firstName;
-@property NSString *lastName;
-@property BOOL *isHoldingLine;
-@property NSInteger *points;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
+@property (nonatomic, getter = isHoldingLine) BOOL *holdingLine;
+@property (nonatomic) NSInteger *points;
+
+- (BOOL) callTable:(Table *) table;
 
 @end

@@ -6,8 +6,13 @@
 //  Copyright (c) 2013 Queue. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface Table : NSObject
+
+@property (strong, nonatomic) NSMutableArray *players;
+
+
+
 
 @end

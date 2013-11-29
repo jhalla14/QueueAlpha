@@ -7,13 +7,21 @@
 //
 
 #import "Player.h"
-#import "Table.h"
+
+
+@interface Player()
+//private properties
+
+@end
 
 @implementation Player
 
 
-- void callTable(Table *table){
+- (BOOL) callTable:(Table *) table
+{
+ 
     
+    return YES;
 }
 
 @end
