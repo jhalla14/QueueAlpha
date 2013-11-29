@@ -7,10 +7,13 @@
 //
 
 #import "Player.h"
+#import "Table.h"
 
 @implementation Player
 
 
-
+- void callTable(Table *table){
+    
+}
 
 @end
