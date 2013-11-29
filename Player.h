@@ -18,5 +18,6 @@
 @property (nonatomic) NSInteger *points;
 
 - (BOOL) callTable:(Table *) table;
+- (BOOL) stepOff:(Table *) table;
 
 @end

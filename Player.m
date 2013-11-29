@@ -24,4 +24,10 @@
     return YES;
 }
 
+- (BOOL) stepOff:(Table *) table
+{
+    
+    return YES;
+}
+
 @end
