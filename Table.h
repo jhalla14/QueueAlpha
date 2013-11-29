@@ -11,6 +11,8 @@
 
 @interface Table : NSObject
 
+@property (nonatomic, getter = isOpen)BOOL *open;
+
 
 
 - (void) addPlayer:(Player *)player;
