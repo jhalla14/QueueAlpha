@@ -10,7 +10,7 @@
 
 @interface Player : NSObject
 
-@property NSString *firstName;
+@property (nonatomic, retain) NSString *firstName;
 @property NSString *lastName;
 @property BOOL *isHoldingLine;
 @property NSInteger *points;
