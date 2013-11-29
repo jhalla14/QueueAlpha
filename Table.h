@@ -7,10 +7,13 @@
 //
 
 @import Foundation;
+#import "Player.h"
 
 @interface Table : NSObject
 
-@property (strong, nonatomic) NSMutableArray *players;
+
+
+- (void) addPlayer:(Player *)player;
 
 
 

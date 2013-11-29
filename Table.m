@@ -7,7 +7,27 @@
 //
 
 #import "Table.h"
+@interface Table()
+@property (strong, nonatomic) NSMutableArray *players;
+@end
 
 @implementation Table
 
+- (NSMutableArray *) players
+{
+    if (!_players) {
+        _players = [[NSMutableArray alloc] init];
+        
+    }
+    return _players;
+}
+
+
+- (void) addPlayer:(Player *) player
+{
+    [self.players insertObject:player atIndex:0];
+}
+
 @end
+
+
