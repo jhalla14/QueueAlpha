@@ -28,8 +28,12 @@
 - (IBAction)touchTestButton:(UIButton *)sender
 {
     
-    
-    [sender setTitle:@"Yup" forState:UIControlStateNormal];
+    if ([[sender.currentTitle description]  isEqual: @"Test"] ){
+        [sender setTitle:@"Yup" forState:UIControlStateNormal];
+    } else {
+        [sender setTitle:@"Test" forState:UIControlStateNormal];
+ 
+    }
 }
 
 @end
