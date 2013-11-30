@@ -9,10 +9,19 @@
 #import "FirstViewController.h"
 
 @interface FirstViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *clicksLabel;
+@property (nonatomic) int clickCount;
 
 @end
 
 @implementation FirstViewController
+
+- (void) setClickCount:(int)clickCount
+{
+    _clickCount = clickCount;
+    self.clicksLabel.text = [NSString stringWithFormat:@"Clicks: %d", self.clickCount];
+    
+}
 
 - (void)viewDidLoad
 {
@@ -34,6 +43,7 @@
         [sender setTitle:@"Test" forState:UIControlStateNormal];
  
     }
+    self.clickCount++;
 }
 
 @end
