@@ -25,5 +25,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)touchTestButton:(UIButton *)sender
+{
+    
+    
+    [sender setTitle:@"Yup" forState:UIControlStateNormal];
+}
 
 @end
