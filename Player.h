@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-#import "Table.h"
+@class Table;
 
 
 @interface Player : NSObject
