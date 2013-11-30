@@ -16,6 +16,17 @@
 
 @implementation Player
 
+- (instancetype) init
+{
+    self = [super init];
+    
+    if (self) {
+        
+    }
+
+    return self;
+}
+
 
 - (BOOL) callTable:(Table *) table
 {
