@@ -23,9 +23,12 @@
 }
 
 
-- (void) addPlayer:(Player *) player
+- (void) addPlayer:(NSString *) name
 {
-    [self.players insertObject:player atIndex:0];
+    Player *newPlayer = [[Player alloc] init];
+    newPlayer.firstName = name;
+    
+    [self.players addObject: newPlayer];
 }
 
 @end
