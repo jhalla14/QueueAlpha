@@ -7,14 +7,24 @@
 //
 
 #import "FirstViewController.h"
+#import "QueueModel.h"
 
 @interface FirstViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *clicksLabel;
 @property (nonatomic) int clickCount;
 
+@property (nonatomic, strong) QueueModel *model;
+
 @end
 
 @implementation FirstViewController
+
+- (QueueModel *) model
+{
+    if (!_model) _model = [[QueueModel alloc] initWithTableCount:0];
+        return _model;
+
+}
 
 - (void) setClickCount:(int)clickCount
 {
