@@ -29,7 +29,7 @@
     
     if (self) {
         for (int i=0; i<count; i++) {
-            self.tables[i];
+//            self.tables[i];
         }
         
     }
@@ -40,8 +40,7 @@
 - (Table *) tableAtIndex:(NSUInteger)index
 {
     
-    
-    return nil;
+    return (index < [self.tables count]) ? self.tables[index]: nil;
 }
 
 @end
