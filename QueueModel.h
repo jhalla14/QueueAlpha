@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Table;
 
 @interface QueueModel : NSObject
+
+//number of tables running
+- (instancetype) initWithTableCount:(NSUInteger) count;
+
+- (Table *) tableAtIndex:(NSUInteger) index;
+
+
 
 @end
