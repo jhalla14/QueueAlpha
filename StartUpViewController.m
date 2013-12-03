@@ -15,10 +15,18 @@
 @end
 
 @implementation StartUpViewController
-- (IBAction)loginButton:(UIButton *)sender {
+- (IBAction)loginButton:(UIButton *)sender
+{
+    [self.emailEntryField resignFirstResponder];
+    NSString *email = [self.emailEntryField text];
+    
+    NSURLConnection *mongo = [[NSURLConnection alloc] initWithRequest:@"https://api.mongolab.com/api/1/databases?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX" delegate:self];
+    
 }
 
-- (IBAction)signUpButton:(UIButton *)sender {
+- (IBAction)signUpButton:(UIButton *)sender
+{
+    
 }
 
 - (void)viewDidLoad
