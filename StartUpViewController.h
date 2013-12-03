@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartUpViewController : UIViewController
+@interface StartUpViewController : UIViewController<UITextFieldDelegate>
 
 //@property (strong, nonatomic) NSMutableData *_responseData;
 

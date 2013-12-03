@@ -19,6 +19,7 @@
 {
     [self.emailEntryField resignFirstResponder];
     NSString *email = [self.emailEntryField text];
+    NSLog(email);
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
     
@@ -29,6 +30,27 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     NSLog(data.description);
 }
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:YES];
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 80; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+
+
 
 - (IBAction)signUpButton:(UIButton *)sender
 {
