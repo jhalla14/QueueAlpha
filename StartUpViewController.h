@@ -10,4 +10,6 @@
 
 @interface StartUpViewController : UIViewController
 
+//@property (strong, nonatomic) NSMutableData *_responseData;
+
 @end
