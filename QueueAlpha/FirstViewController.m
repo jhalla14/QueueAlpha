@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *body;
 @property (weak, nonatomic) IBOutlet UILabel *headline;
+@property (weak, nonatomic) IBOutlet UIButton *outlineButton;
 
 @end
 
@@ -69,22 +70,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:self.outlineButton.currentTitle];
     
+    [title setAttributes:@{NSStrokeWidthAttributeName: @3, NSStrokeColorAttributeName:self.outlineButton.tintColor} range:NSMakeRange(0, [title length])];
+    
+    [self.outlineButton setAttributedTitle:title forState:UIControlStateNormal];
     //initilization and outlet setting
     //only called once in lifetime of controller
     //called before going on screen
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    //called just before view goes on screen
-    //called multiple times (everytime view is on screen)
-    //change of views based on data (things that changed before being visible)
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    
 }
 
 - (void) viewWillLayoutSubviews
@@ -98,10 +91,28 @@
     //called after viewWillLayoutSubviews
 }
 
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    //guarented that view will appear
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    //called just before view goes on screen
+    //called multiple times (everytime view is on screen)
+    //change of views based on data (things that changed before being visible)
+}
+
 - (void) viewWillDisappear:(BOOL)animated
 {
     //remember what's going on and cleanup code
     //rememberScroolPosition
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    
 }
 
 - (void)didReceiveMemoryWarning
