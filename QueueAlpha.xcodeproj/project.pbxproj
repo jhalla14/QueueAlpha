@@ -26,6 +26,7 @@
 		F0917A32184812C900AF308F /* Table.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A31184812C900AF308F /* Table.m */; };
 		F0917A351849512200AF308F /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A341849512200AF308F /* Team.m */; };
 		F0917A38184BE9C300AF308F /* QueueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A37184BE9C300AF308F /* QueueModel.m */; };
+		F0917A3E184E5A1900AF308F /* StartUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A3D184E5A1900AF308F /* StartUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		F0917A341849512200AF308F /* Team.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Team.m; sourceTree = "<group>"; };
 		F0917A36184BE9C300AF308F /* QueueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueueModel.h; sourceTree = "<group>"; };
 		F0917A37184BE9C300AF308F /* QueueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueModel.m; sourceTree = "<group>"; };
+		F0917A3C184E5A1900AF308F /* StartUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartUpViewController.h; path = ../StartUpViewController.h; sourceTree = "<group>"; };
+		F0917A3D184E5A1900AF308F /* StartUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartUpViewController.m; path = ../StartUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 		F09179FB1847DD1D00AF308F /* QueueAlpha */ = {
 			isa = PBXGroup;
 			children = (
+				F0917A3C184E5A1900AF308F /* StartUpViewController.h */,
+				F0917A3D184E5A1900AF308F /* StartUpViewController.m */,
 				F0917A041847DD1D00AF308F /* AppDelegate.h */,
 				F0917A051847DD1D00AF308F /* AppDelegate.m */,
 				F0917A071847DD1D00AF308F /* Main.storyboard */,
@@ -276,6 +281,7 @@
 			files = (
 				F0917A32184812C900AF308F /* Table.m in Sources */,
 				F0917A0F1847DD1D00AF308F /* SecondViewController.m in Sources */,
+				F0917A3E184E5A1900AF308F /* StartUpViewController.m in Sources */,
 				F0917A061847DD1D00AF308F /* AppDelegate.m in Sources */,
 				F0917A0C1847DD1D00AF308F /* FirstViewController.m in Sources */,
 				F0917A021847DD1D00AF308F /* main.m in Sources */,

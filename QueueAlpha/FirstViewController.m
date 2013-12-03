@@ -68,7 +68,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+//    [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 //    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:self.outlineButton.currentTitle];
 //    
@@ -94,24 +94,24 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+//    [super viewWillAppear:animated];
 //    [self usePreferredFonts];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preferredFontsChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 //    
     //guarented that view will appear
 }
 
-- (void) preferredFontsChanged: (NSNotification *) notification
-{
-//    [self usePreferredFonts];
+//- (void) preferredFontsChanged: (NSNotification *) notification
+//{
+////    [self usePreferredFonts];
+//
+//}
 
-}
-
-- (void) usePreferredFonts
-{
-    self.body.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.headline.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-}
+//- (void) usePreferredFonts
+//{
+//    self.body.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+//    self.headline.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+//}
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -134,7 +134,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+//    [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     //try to free up memory in the heap
     //set strong pointers to nil

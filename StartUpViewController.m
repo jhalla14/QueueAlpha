@@ -9,18 +9,16 @@
 #import "StartUpViewController.h"
 
 @interface StartUpViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
 
 @end
 
 @implementation StartUpViewController
+- (IBAction)loginButton:(UIButton *)sender {
+}
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (IBAction)signUpButton:(UIButton *)sender {
 }
 
 - (void)viewDidLoad
