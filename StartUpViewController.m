@@ -7,7 +7,6 @@
 //
 
 #import "StartUpViewController.h"
-
 @interface StartUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
@@ -19,16 +18,28 @@
 {
     [self.emailEntryField resignFirstResponder];
     NSString *email = [self.emailEntryField text];
-    NSLog(email);
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     NSURLResponse *response = nil;
     NSError *error = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSLog(data.description);
+
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+    
+    if (!jsonArray) {
+        NSLog(@"Error parsing JSON: %@", error);
+    } else {
+        for(NSDictionary *item in jsonArray) {
+            NSLog(@" %@", item);
+            NSLog(@"---------------------------------");
+        }
+    }
+    
+//    NSLog(jsonArray.description);
+
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
