@@ -18,6 +18,7 @@
 {
     [self.emailEntryField resignFirstResponder];
     NSString *email = [self.emailEntryField text];
+    NSString *password = [self.passwordEntryField text];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
     
@@ -33,12 +34,12 @@
     // so that we can append data to it in the didReceiveData method
     // Furthermore, this method is called each time there is a redirect so reinitializing it
     // also serves to clear it
-    __responseData = [[NSMutableData alloc] init];
+    _responseData = [[NSMutableData alloc] init];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     // Append the new data to the instance variable you declared
-    [__responseData appendData:data];
+    [_responseData appendData:data];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
@@ -51,11 +52,10 @@
     // The request is complete and data has been received
     // You can parse the stuff in your instance variable now
     
-//    NSURLResponse *response = nil;
     NSError *error = nil;
-//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: __responseData options: NSJSONReadingMutableContainers error: &error];
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: _responseData
+                                                         options: NSJSONReadingMutableContainers
+                                                           error: &error];
     
     if (!jsonArray) {
         NSLog(@"Error parsing JSON: %@", error);
@@ -65,9 +65,7 @@
             NSLog(@"---------------------------------");
         }
     }
-    
 
-    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

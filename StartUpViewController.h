@@ -10,6 +10,6 @@
 
 @interface StartUpViewController : UIViewController<NSURLConnectionDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) NSMutableData *_responseData;
+@property (strong, nonatomic) NSMutableData *responseData;
 
 @end
