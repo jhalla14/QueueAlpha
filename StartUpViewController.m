@@ -75,8 +75,20 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    
+    self.emailEntryField = textField;
 }
+
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    self.emailEntryField = nil;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 - (IBAction)signUpButton:(UIButton *)sender
 {
