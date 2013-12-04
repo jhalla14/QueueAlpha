@@ -23,11 +23,39 @@
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+}
 
-    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &error];
+#pragma mark NSURLConnection Delegate Methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // A response has been received, this is where we initialize the instance var you created
+    // so that we can append data to it in the didReceiveData method
+    // Furthermore, this method is called each time there is a redirect so reinitializing it
+    // also serves to clear it
+    __responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // Append the new data to the instance variable you declared
+    [__responseData appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+    // Return nil to indicate not necessary to store a cached response for this connection
+    return nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // The request is complete and data has been received
+    // You can parse the stuff in your instance variable now
+    
+//    NSURLResponse *response = nil;
+    NSError *error = nil;
+//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: __responseData options: NSJSONReadingMutableContainers error: &error];
     
     if (!jsonArray) {
         NSLog(@"Error parsing JSON: %@", error);
@@ -38,30 +66,19 @@
         }
     }
     
-//    NSLog(jsonArray.description);
 
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // The request has failed for some reason!
+    // Check the error var
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self animateTextField:textField up:YES];
-}
-
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
-    const int movementDistance = 80; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
     
-    int movement = (up ? -movementDistance : movementDistance);
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
-    [UIView commitAnimations];
 }
-
-
 
 - (IBAction)signUpButton:(UIButton *)sender
 {
