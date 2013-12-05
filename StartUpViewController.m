@@ -35,8 +35,19 @@
 {
     [self.emailEntryField resignFirstResponder];
 
+    NSString *baseURL = @"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?";
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
+    NSString *exclusionField = @"f={\'_id\':0)&";
+    
+    NSString *apiKey = @"apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX";
+    
+    NSString *beta = [[baseURL stringByAppendingString:exclusionField] stringByAppendingString:apiKey ];
+    
+    NSLog(@"%@",beta);
+    
+    NSURL *url = [NSURL URLWithString:beta];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
