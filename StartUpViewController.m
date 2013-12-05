@@ -11,7 +11,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
 
-@property (strong, nonatomic) UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) UITextField* activeField;
 
 
 
@@ -19,12 +21,12 @@
 
 @implementation StartUpViewController
 
-- (UIScrollView *)scrollView
-{
-    if (!_scrollView) _scrollView = [[UIScrollView alloc] init];
-    
-    return _scrollView;
-}
+//- (UIScrollView *)scrollView
+//{
+//    if (!_scrollView) _scrollView = [[UIScrollView alloc] init];
+//    
+//    return _scrollView;
+//}
 - (IBAction)loginButton:(UIButton *)sender
 {
     [self.emailEntryField resignFirstResponder];
@@ -86,20 +88,58 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    _passwordEntryField
-    = textField;
+    _activeField = textField;
     
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
-    _passwordEntryField = nil;
+    _activeField = nil;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, _activeField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:_activeField.frame animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 
@@ -114,7 +154,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.scrollView];
+    [self registerForKeyboardNotifications];
 
 	
 }
