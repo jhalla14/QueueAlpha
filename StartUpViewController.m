@@ -23,6 +23,13 @@
 
 @implementation StartUpViewController
 
+- (void) setScrollView:(UIScrollView *)scrollView
+{
+    _scrollView = scrollView;
+    self.scrollView.contentSize = CGSizeZero;
+}
+
+
 - (NSArray *) userData
 {
     if (!_userData) {
@@ -34,16 +41,31 @@
 - (IBAction)loginButton:(UIButton *)sender
 {
     
+    [self startDownloadingUsers];
+    
+    [self.emailEntryField resignFirstResponder];
+  
+}
+- (void) startDownloadingUsers
+{
     NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+//    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *localfile, NSURLResponse *response, NSError *error) {
+//        if (!error) {
+//            
+//        }
+//    }];
+//    [task resume];
+    
     [connection start];
     
-    [self.emailEntryField resignFirstResponder];
-  
+    
 }
 
 - (void) checkLoginCredentials
@@ -63,6 +85,7 @@
     for (NSString *string in passwords) {
         if ([string isEqualToString:password]) {
             NSLog(@"In database");
+            [self performSegueWithIdentifier:@"userAccountExists" sender:self.view];
         }
         NSLog(@"%@", string);
     }
