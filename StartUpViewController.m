@@ -13,7 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
-@property (strong, nonatomic) UITextField* activeField;
+@property (strong, nonatomic) UITextField *activeField;
+
+@property (strong, nonatomic) NSArray *userData;
 
 
 
@@ -21,23 +23,39 @@
 
 @implementation StartUpViewController
 
-//- (UIScrollView *)scrollView
-//{
-//    if (!_scrollView) _scrollView = [[UIScrollView alloc] init];
-//    
-//    return _scrollView;
-//}
+- (NSArray *) userData
+{
+    if (!_userData) {
+        _userData = [[NSArray alloc] init];
+    }
+    return _userData;
+}
+
 - (IBAction)loginButton:(UIButton *)sender
 {
     [self.emailEntryField resignFirstResponder];
-    NSString *email = [self.emailEntryField text];
-    NSString *password = [self.passwordEntryField text];
+
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"]];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
+    [connection start];
     
+    
+  
+}
+
+- (void) checkLoginCredentials
+{
+    NSString *email = [self.emailEntryField text];
+    NSString *password = [self.passwordEntryField text];
+
+
+    for (NSDictionary *item in _userData){
+        NSLog([item allKeys].description);
+    }
+
 }
 
 #pragma mark NSURLConnection Delegate Methods
@@ -70,14 +88,18 @@
                                                          options: NSJSONReadingMutableContainers
                                                            error: &error];
     
-    if (!jsonArray) {
-        NSLog(@"Error parsing JSON: %@", error);
-    } else {
-        for(NSDictionary *item in jsonArray) {
-            NSLog(@" %@", item);
-            NSLog(@"---------------------------------");
-        }
-    }
+    _userData = jsonArray;
+    
+    [self checkLoginCredentials];
+    
+//    if (!jsonArray) {
+//        NSLog(@"Error parsing JSON: %@", error);
+//    } else {
+//        for(NSDictionary *item in jsonArray) {
+//            NSLog(@" %@", item);
+//            NSLog(@"---------------------------------");
+//        }
+//    }
 
 }
 
@@ -148,15 +170,11 @@
     
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self registerForKeyboardNotifications];
-
-	
 }
 
 - (void)didReceiveMemoryWarning
