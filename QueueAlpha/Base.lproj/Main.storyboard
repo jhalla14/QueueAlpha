@@ -24,13 +24,16 @@
                                         <rect key="frame" x="20" y="226" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="bdT-Pr-qZ0" id="0yA-30-7qu"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jad-D8-Izb">
                                         <rect key="frame" x="20" y="141" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="light" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="bdT-Pr-qZ0" id="R2B-nN-isu"/>
                                         </connections>
@@ -72,7 +75,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButton:" destination="bdT-Pr-qZ0" eventType="touchUpInside" id="1e7-RQ-lwC"/>
-                                            <segue destination="MW3-aN-QS3" kind="push" identifier="userAccountExists" id="ZTw-bN-CWL"/>
+                                            <segue destination="MW3-aN-QS3" kind="push" identifier="UserAccountExists" id="ZTw-bN-CWL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -115,20 +118,22 @@
             </objects>
             <point key="canvasLocation" x="715" y="-110"/>
         </scene>
-        <!--View Controller - Tables-->
+        <!--Queue View Controller - Tables-->
         <scene sceneID="rQX-fm-FCr">
             <objects>
-                <viewController id="MW3-aN-QS3" sceneMemberID="viewController">
+                <viewController id="MW3-aN-QS3" customClass="QueueViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="by8-eH-QRO"/>
                         <viewControllerLayoutGuide type="bottom" id="pe5-H3-c7Y"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Vwz-8Q-7f7">
+                    <view key="view" contentMode="scaleToFill" id="Vwz-8Q-7f7" customClass="QueueView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tables" id="wxJ-qa-U3K"/>
+                    <navigationItem key="navigationItem" title="Tables" id="wxJ-qa-U3K">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="mfK-oj-UtN"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul1-lu-YEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

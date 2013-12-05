@@ -85,7 +85,7 @@
     for (NSString *string in passwords) {
         if ([string isEqualToString:password]) {
             NSLog(@"In database");
-            [self performSegueWithIdentifier:@"userAccountExists" sender:self.view];
+            [self performSegueWithIdentifier:@"UserAccountExists" sender:self];
         }
         NSLog(@"%@", string);
     }
@@ -201,7 +201,7 @@
 
 - (IBAction)signUpButton:(UIButton *)sender
 {
-    
+    [self.passwordEntryField resignFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -209,6 +209,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self registerForKeyboardNotifications];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
