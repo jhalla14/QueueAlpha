@@ -33,19 +33,8 @@
 
 - (IBAction)loginButton:(UIButton *)sender
 {
-    [self.emailEntryField resignFirstResponder];
-
-    NSString *baseURL = @"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?";
     
-    NSString *exclusionField = @"f={\'_id\':0)&";
-    
-    NSString *apiKey = @"apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX";
-    
-    NSString *beta = [[baseURL stringByAppendingString:exclusionField] stringByAppendingString:apiKey ];
-    
-    NSLog(@"%@",beta);
-    
-    NSURL *url = [NSURL URLWithString:beta];
+    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -53,7 +42,7 @@
     
     [connection start];
     
-    
+    [self.emailEntryField resignFirstResponder];
   
 }
 
@@ -61,10 +50,21 @@
 {
     NSString *email = [self.emailEntryField text];
     NSString *password = [self.passwordEntryField text];
+    
+    NSMutableArray *passwords = [[NSMutableArray alloc] init];
 
 
     for (NSDictionary *item in _userData){
-        NSLog([item allKeys].description);
+//        NSLog([item allKeys].description);
+        NSLog(@"%@",[item objectForKey:@"password"]);
+        [passwords addObject:[item objectForKey:@"password"]];
+    }
+    
+    for (NSString *string in passwords) {
+        if ([string isEqualToString:password]) {
+            NSLog(@"In database");
+        }
+        NSLog(@"%@", string);
     }
 
 }
