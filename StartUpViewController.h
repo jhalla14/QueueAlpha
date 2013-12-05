@@ -11,6 +11,11 @@
 @interface StartUpViewController : UIViewController<NSURLConnectionDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSMutableData *responseData;
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *password;
+
+- (void) keyboardWasShown:(NSNotification *) aNotification;
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification;
 
 
 @end

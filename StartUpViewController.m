@@ -11,9 +11,20 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
 
+@property (strong, nonatomic) UIScrollView *scrollView;
+
+
+
 @end
 
 @implementation StartUpViewController
+
+- (UIScrollView *)scrollView
+{
+    if (!_scrollView) _scrollView = [[UIScrollView alloc] init];
+    
+    return _scrollView;
+}
 - (IBAction)loginButton:(UIButton *)sender
 {
     [self.emailEntryField resignFirstResponder];
@@ -75,12 +86,14 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    self.emailEntryField = textField;
+    _passwordEntryField
+    = textField;
+    
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
-    self.emailEntryField = nil;
+    _passwordEntryField = nil;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -95,10 +108,15 @@
     
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
+    [self.view addSubview:self.scrollView];
+
+	
 }
 
 - (void)didReceiveMemoryWarning
