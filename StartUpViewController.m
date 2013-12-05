@@ -68,6 +68,14 @@
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"UserAccountExists"]) {
+        NSLog(@"Going to Tables page");
+    }
+}
+
 - (void) checkLoginCredentials
 {
     NSString *email = [self.emailEntryField text];
