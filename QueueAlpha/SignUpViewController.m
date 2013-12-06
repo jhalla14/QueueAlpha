@@ -26,9 +26,13 @@
 
 - (void) postNewUserToDatabase
 {
-    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
+    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX", @"email" : @"email", @"password" : @"password"];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPPMethod: @"POST"];
     
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -65,6 +69,23 @@
 //                                                           error: &error];
 //    
 //    _userData = jsonArray;
+}
+
+- (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+    
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSString *username = @"username";
+    NSString *password = @"password";
+    
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:username
+                                                             password:password
+                                                          persistence:NSURLCredentialPersistenceForSession];
+    [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
