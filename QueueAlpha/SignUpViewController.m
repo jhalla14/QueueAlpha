@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) UITextField *activeField;
+
+@property (strong, nonatomic) NSURLConnection *URLconnection;
 @end
 
 @implementation SignUpViewController
@@ -69,6 +71,10 @@
 //                                                           error: &error];
 //    
 //    _userData = jsonArray;
+    
+    //releasing the connection object
+    _URLconnection= nil;
+    
 }
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
