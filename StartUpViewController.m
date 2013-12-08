@@ -93,11 +93,38 @@
     for (NSString *string in passwords) {
         if ([string isEqualToString:password]) {
             NSLog(@"In database");
-            [self performSegueWithIdentifier:@"UserAccountExists" sender:self];
+//            [self performSegueWithIdentifier:@"UserAccountExists" sender:self];
         }
         NSLog(@"%@", string);
     }
 
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"UserAccountExists"]) {
+        NSString *password = [self.passwordEntryField text];
+        
+        NSMutableArray *passwords = [[NSMutableArray alloc] init];
+        
+        
+        for (NSDictionary *item in _userData){
+            //        NSLog([item allKeys].description);
+            NSLog(@"%@",[item objectForKey:@"password"]);
+            [passwords addObject:[item objectForKey:@"password"]];
+        }
+        
+        for (NSString *string in passwords) {
+            if ([string isEqualToString:password]) {
+                NSLog(@"In database");
+                return YES;
+                            }
+            NSLog(@"%@", string);
+        }
+
+//        return NO;
+    }
+    return NO;
 }
 
 #pragma mark NSURLConnection Delegate Methods

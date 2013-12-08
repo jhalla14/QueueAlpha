@@ -28,16 +28,16 @@
 
 - (void) postNewUserToDatabase
 {
-    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX", @"email" : @"email", @"password" : @"password"];
-    
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    [request setHTTPPMethod: @"POST"];
-    
-    
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+//    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX", @"email" : @"email", @"password" : @"password"];
+//    
+////    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//    
+////    [request setHTTPPMethod: @"POST"];
+//    
+//    
+//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 #pragma mark NSURLConnection Delegate Methods
