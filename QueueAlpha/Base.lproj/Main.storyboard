@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASx-PO-j4y">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ASx-PO-j4y">
                                         <rect key="frame" x="20" y="226" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -29,7 +29,7 @@
                                             <outlet property="delegate" destination="bdT-Pr-qZ0" id="0yA-30-7qu"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jad-D8-Izb">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jad-D8-Izb">
                                         <rect key="frame" x="20" y="141" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -38,25 +38,25 @@
                                             <outlet property="delegate" destination="bdT-Pr-qZ0" id="R2B-nN-isu"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykP-c6-fRy">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykP-c6-fRy">
                                         <rect key="frame" x="28" y="202" width="76" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6z-Jr-xob">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6z-Jr-xob">
                                         <rect key="frame" x="28" y="112" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-DK-U7p">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxN-DK-U7p">
                                         <rect key="frame" x="45" y="319" width="183" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-yk-gbu">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbY-yk-gbu">
                                         <rect key="frame" x="195" y="310" width="55" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Sign Up">
@@ -67,7 +67,7 @@
                                             <segue destination="ALr-Kt-FU6" kind="push" id="Ege-Kp-lrw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rx-NT-aX2">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rx-NT-aX2">
                                         <rect key="frame" x="141" y="264" width="38" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Login">
@@ -79,12 +79,27 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="DxN-DK-U7p" secondAttribute="centerX" constant="23.5" id="4se-rM-uQ7"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="top" secondItem="fO4-uL-bZL" secondAttribute="top" constant="141" id="82B-kp-lwc"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="leading" secondItem="fO4-uL-bZL" secondAttribute="leading" constant="20" symbolic="YES" id="8PL-So-9zx"/>
+                                    <constraint firstAttribute="centerX" secondItem="VbY-yk-gbu" secondAttribute="centerX" constant="-62.5" id="A7y-N3-Tl0"/>
+                                    <constraint firstAttribute="bottom" secondItem="jad-D8-Izb" secondAttribute="bottom" constant="332" id="I59-um-SsX"/>
+                                    <constraint firstAttribute="trailing" secondItem="jad-D8-Izb" secondAttribute="trailing" constant="20" symbolic="YES" id="ITY-Y7-ezd"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="trailing" secondItem="ASx-PO-j4y" secondAttribute="trailing" id="SKl-Di-bua"/>
+                                    <constraint firstItem="ykP-c6-fRy" firstAttribute="top" secondItem="jad-D8-Izb" secondAttribute="bottom" constant="31" id="luE-eo-hXa"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="leading" secondItem="ASx-PO-j4y" secondAttribute="leading" id="n3A-ug-Bpw"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="centerX" secondItem="fO4-uL-bZL" secondAttribute="centerX" id="ntd-dY-M5c"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="top" secondItem="X6z-Jr-xob" secondAttribute="bottom" constant="8" symbolic="YES" id="pnA-5n-API"/>
+                                    <constraint firstItem="jad-D8-Izb" firstAttribute="centerX" secondItem="3Rx-NT-aX2" secondAttribute="centerX" id="tOy-O2-l7D"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fO4-uL-bZL" firstAttribute="top" secondItem="jrS-lm-xBR" secondAttribute="bottom" constant="1" id="8Ep-Pl-wrf"/>
                             <constraint firstAttribute="bottom" secondItem="fO4-uL-bZL" secondAttribute="bottom" id="Jds-jr-iPQ"/>
+                            <constraint firstItem="fO4-uL-bZL" firstAttribute="top" secondItem="jrS-lm-xBR" secondAttribute="bottom" constant="1" id="Jlq-0b-EbI"/>
                             <constraint firstAttribute="trailing" secondItem="fO4-uL-bZL" secondAttribute="trailing" id="iVe-6s-ooa"/>
                             <constraint firstItem="fO4-uL-bZL" firstAttribute="leading" secondItem="zsF-bn-OQe" secondAttribute="leading" id="tty-2s-ZMq"/>
                         </constraints>
