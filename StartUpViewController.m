@@ -17,11 +17,29 @@
 
 @property (strong, nonatomic) NSArray *userData;
 
+@property (strong, nonatomic) NSMutableArray *emails;
+@property (strong, nonatomic)NSMutableArray *passwords;
 
 
 @end
 
 @implementation StartUpViewController
+
+- (NSMutableArray *)emails
+{
+    if (!_emails) {
+        _emails = [NSMutableArray new];
+    }
+    return _emails;
+}
+
+- (NSMutableArray *)passwords
+{
+    if (!_passwords) {
+        _passwords = [NSMutableArray new];
+    }
+    return _passwords;
+}
 
 - (void) setScrollView:(UIScrollView *)scrollView
 {
@@ -78,62 +96,30 @@
 
 - (void) checkLoginCredentials
 {
-//    NSString *email = [self.emailEntryField text];
-//    NSString *password = [self.passwordEntryField text];
-//    
-//    NSMutableArray *passwords = [[NSMutableArray alloc] init];
-//
-//
-//    for (NSDictionary *item in _userData){
-////        NSLog([item allKeys].description);
-//        NSLog(@"%@",[item objectForKey:@"password"]);
-//        [passwords addObject:[item objectForKey:@"password"]];
-//    }
-//    
-//    for (NSString *string in passwords) {
-//        if ([string isEqualToString:password]) {
-//            NSLog(@"In database");
-//        }
-//        NSLog(@"%@", string);
-//    }
-
+    for (NSDictionary *item in _userData){
+        NSLog(@"%@",[item objectForKey:@"password"]);
+        [_emails addObject:[item objectForKey:@"email"]];
+        [_passwords addObject:[item objectForKey:@"password"]];
+    }
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
+    
+    NSString *email = [self.emailEntryField text];
+    NSString *password = [self.passwordEntryField text];
+    
     if ([identifier isEqualToString:@"UserAccountExists"]) {
-        NSString *email = [self.emailEntryField text];
-        NSString *password = [self.passwordEntryField text];
         
-        NSMutableArray *emails = [[NSMutableArray alloc] init];
-        NSMutableArray *passwords = [[NSMutableArray alloc] init];
-        
-        
-        for (NSDictionary *item in _userData){
-            NSLog(@"%@",[item objectForKey:@"password"]);
-            [emails addObject:[item objectForKey:@"email"]];
-            [passwords addObject:[item objectForKey:@"password"]];
-        }
-        
-        for (NSString *string in emails){
-            if ([string isEqualToString:email]){
-                for (NSString *passWrd in passwords){
-                    if ([passWrd isEqualToString:password]) {
+        for (NSString *emailString in _emails){
+            if ([emailString isEqualToString:email]){
+                for (NSString *passwordString in _passwords){
+                    if ([passwordString isEqualToString:password]) {
                         return YES;
                     }
                 }
             }
         }
-        
-//        for (NSString *string in passwords) {
-//            if ([string isEqualToString:password]) {
-//                NSLog(@"In database");
-////                break;
-//                return YES;
-//            }
-//            NSLog(@"%@", string);
-//            
-//        }
         
     }
     return NO;
