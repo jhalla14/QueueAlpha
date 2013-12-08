@@ -120,6 +120,8 @@
             }
         }
         
+    } else if ([identifier isEqualToString:@"SignUp"]){
+        return YES;
     }
     return NO;
 }
