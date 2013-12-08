@@ -18,7 +18,7 @@
 @property (strong, nonatomic) NSArray *userData;
 
 @property (strong, nonatomic) NSMutableArray *emails;
-@property (strong, nonatomic)NSMutableArray *passwords;
+@property (strong, nonatomic) NSMutableArray *passwords;
 
 
 @end
@@ -28,7 +28,7 @@
 - (NSMutableArray *)emails
 {
     if (!_emails) {
-        _emails = [NSMutableArray new];
+        _emails = [[NSMutableArray alloc] init];
     }
     return _emails;
 }
@@ -36,7 +36,7 @@
 - (NSMutableArray *)passwords
 {
     if (!_passwords) {
-        _passwords = [NSMutableArray new];
+        _passwords = [[NSMutableArray alloc] init];
     }
     return _passwords;
 }
@@ -97,9 +97,8 @@
 - (void) checkLoginCredentials
 {
     for (NSDictionary *item in _userData){
-        NSLog(@"%@",[item objectForKey:@"password"]);
-        [_emails addObject:[item objectForKey:@"email"]];
-        [_passwords addObject:[item objectForKey:@"password"]];
+        [[self emails] addObject:[item objectForKey:@"email"]];
+        [[self passwords] addObject:[item objectForKey:@"password"]];
     }
 }
 
@@ -110,11 +109,11 @@
     NSString *password = [self.passwordEntryField text];
     
     if ([identifier isEqualToString:@"UserAccountExists"]) {
-        
-        for (NSString *emailString in _emails){
+        for (NSString *emailString in [self emails]){
             if ([emailString isEqualToString:email]){
-                for (NSString *passwordString in _passwords){
+                for (NSString *passwordString in [self passwords]){
                     if ([passwordString isEqualToString:password]) {
+                        
                         return YES;
                     }
                 }
