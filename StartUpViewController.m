@@ -70,18 +70,19 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-//    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *localfile, NSURLResponse *response, NSError *error) {
-//        if (!error) {
-//            
-//        }
-//    }];
-//    [task resume];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *localfile, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSLog(@"Returned with no Error");
+            NSLog(@"File is at location %@", localfile);
+        }
+    }];
+    [task resume];
     
-    [connection start];
+//    [connection start];
     
     
 }
@@ -125,6 +126,18 @@
     }
     return NO;
 }
+
+#pragma mark NSURLSession Delegate Methods
+
+//- (void) URLSession:(NSURLSession *) session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+//{
+//    NSLog(@"Session %@ download task %@ finished downloading to URL %@\n", session, downloadTask, location);
+//}
+//
+//- (void) URLSession:(NSURLSession *) session task:(NSURLSessionTask *) task didCompleteWithError:(NSError *) error
+//{
+//    NSLog(@"Error in did complete with Error");
+//}
 
 #pragma mark NSURLConnection Delegate Methods
 
