@@ -78,11 +78,30 @@
         if (!error) {
             NSLog(@"Returned with no Error");
             NSLog(@"File is at location %@", localfile);
+            NSLog(@"URL Response %@", response);
+            
+            //get the data in that local file
+            NSMutableData *data = [NSData dataWithContentsOfURL:localfile];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{self.responseData = data;});
         }
+//            [self performSelectorOnMainThread:@selector(setResponseData:) withObject:data waitUntilDone:NO];
+//            self.responseData = data;      
     }];
+    
     [task resume];
     
 //    [connection start];
+    
+//    NSError *error = nil;
+//    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: [self responseData]
+//                                                         options: NSJSONReadingMutableContainers
+//                                                           error: &error];
+//    
+//    NSLog(@"Json array is %@", jsonArray);
+////    _userData = jsonArray;
+//    
+//    [self checkLoginCredentials];
     
     
 }
