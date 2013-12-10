@@ -67,7 +67,7 @@
 - (IBAction)loginButton:(UIButton *)sender
 {
     
-    [self startDownloadingUsers];
+    [self checkLoginCredentials];
     
     [self.emailEntryField resignFirstResponder];
     
@@ -93,32 +93,21 @@
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
                                                       completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {
                                                           if (!error) {
-//                                                              NSLog(@"Returned with no Error");
-//                                                              NSLog(@"File is at location %@", localFile);
-//                                                              NSLog(@"URL Response %@", response);
-                                                              
                                                               NSMutableData *data = [NSMutableData dataWithContentsOfURL:localFile];
                                                               
                                                               NSError *error = nil;
                                                               NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data
                                                                                                                    options: NSJSONReadingMutableContainers
                                                                                                                      error: &error];
-
-//                                                              NSLog(@"Data is %@", jsonArray);
                                                               
 //                                                              dispatch_async(dispatch_get_main_queue(), ^{self.responseData = jsonArray;});
-                                                              
 
                                                               [self performSelectorOnMainThread:@selector(setUserData:) withObject:jsonArray waitUntilDone:NO];
-//                                                              NSLog(@"Repsonse data is %@", self.responseData);
-                                                              [self checkLoginCredentials];
+//                                                              [self checkLoginCredentials];
                                                           }
     }];
     
     [task resume];
-    
-//    NSLog(@"Repsonse data is %@", self.responseData);
-    
     
 }
 
@@ -314,6 +303,7 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+    [self startDownloadingUsers];
 }
 
 - (void)didReceiveMemoryWarning
