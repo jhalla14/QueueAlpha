@@ -25,6 +25,14 @@
 
 @implementation StartUpViewController
 
+- (NSArray *) responseData
+{
+    if (!_responseData){
+        _responseData = [[NSArray alloc] init];
+    }
+    return _responseData;
+}
+
 - (NSMutableArray *)emails
 {
     if (!_emails) {
@@ -62,6 +70,7 @@
     [self startDownloadingUsers];
     
     [self.emailEntryField resignFirstResponder];
+    
   
 }
 - (void) startDownloadingUsers
@@ -86,43 +95,29 @@
 //                                                              NSLog(@"URL Response %@", response);
                                                               
                                                               NSMutableData *data = [NSMutableData dataWithContentsOfURL:localFile];
-
-//                                                              NSLog(@"Data is %@", [data description]);
                                                               
-                                                              dispatch_async(dispatch_get_main_queue(), ^{self.responseData = data;});
+                                                              NSError *error = nil;
+                                                              NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data
+                                                                                                                   options: NSJSONReadingMutableContainers
+                                                                                                                     error: &error];
 
-//                                                              [self performSelectorOnMainThread:@selector(setResponseData:) withObject:data waitUntilDone:NO];
+//                                                              NSLog(@"Data is %@", jsonArray);
+                                                              
+//                                                              dispatch_async(dispatch_get_main_queue(), ^{self.responseData = jsonArray;});
+                                                              
+
+                                                              [self performSelectorOnMainThread:@selector(setResponseData:) withObject:jsonArray waitUntilDone:YES];
+//                                                              NSLog(@"Repsonse data is %@", self.responseData);
+                                                              [self checkLoginCredentials];
                                                           }
     }];
     
     [task resume];
     
-    NSLog(@"Repsonse data is %@", self.responseData);
-    [self checkLoginCredentials];
+//    NSLog(@"Repsonse data is %@", self.responseData);
+    
     
 }
-
-
-//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-
-//    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
-//                                                    completionHandler:^(NSURL *localfile, NSURLResponse *response, NSError *error) {
-//        if (!error) {
-//
-//            //get the data in that local file
-////            NSMutableData *data = [NSData dataWithContentsOfURL:localfile];
-////            
-//////            dispatch_async(dispatch_get_main_queue(), ^{self.responseData = data;});
-////            [self performSelectorOnMainThread:@selector(setResponseData:) withObject:data waitUntilDone:NO];
-//        
-//        }
-//    }];
-    
-    
-//    [task resume];
-    
-//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -134,6 +129,7 @@
 
 - (void) checkLoginCredentials
 {
+    NSLog(@"Repsonse data in login credentials is %@", self.responseData);
     for (NSDictionary *item in _userData){
         [[self emails] addObject:[item objectForKey:@"email"]];
         [[self passwords] addObject:[item objectForKey:@"password"]];
@@ -183,12 +179,12 @@
     // so that we can append data to it in the didReceiveData method
     // Furthermore, this method is called each time there is a redirect so reinitializing it
     // also serves to clear it
-    _responseData = [[NSMutableData alloc] init];
+//    _responseData = [[NSMutableData alloc] init];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     // Append the new data to the instance variable you declared
-    [_responseData appendData:data];
+//    [_responseData appendData:data];
 }
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
