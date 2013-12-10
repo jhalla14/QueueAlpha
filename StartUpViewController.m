@@ -86,12 +86,15 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
     
 //    NSLog(@"%@", session);
+    NSURLSessionDownloadTask *tasl = [session downloadTaskWithRequest:request];
+    
+    [tasl resume];
     
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
                                                       completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {
                                                           if (!error) {
-                                                              NSLog(@"Returned with no Error");
-                                                              NSLog(@"File is at location %@", localFile);
+//                                                              NSLog(@"Returned with no Error");
+//                                                              NSLog(@"File is at location %@", localFile);
 //                                                              NSLog(@"URL Response %@", response);
                                                               
                                                               NSMutableData *data = [NSMutableData dataWithContentsOfURL:localFile];
@@ -106,7 +109,7 @@
 //                                                              dispatch_async(dispatch_get_main_queue(), ^{self.responseData = jsonArray;});
                                                               
 
-                                                              [self performSelectorOnMainThread:@selector(setResponseData:) withObject:jsonArray waitUntilDone:YES];
+                                                              [self performSelectorOnMainThread:@selector(setUserData:) withObject:jsonArray waitUntilDone:NO];
 //                                                              NSLog(@"Repsonse data is %@", self.responseData);
                                                               [self checkLoginCredentials];
                                                           }
@@ -119,6 +122,21 @@
     
 }
 
+- (void) URLSession:(NSURLSession *) session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
+{
+
+}
+
+- (void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
+{
+    
+}
+
+- (void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+{
+    NSLog(@"Completed download tasl");
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
@@ -129,11 +147,13 @@
 
 - (void) checkLoginCredentials
 {
-    NSLog(@"Repsonse data in login credentials is %@", self.responseData);
+//    NSLog(@"Repsonse data in login credentials is %@", self.responseData);
     for (NSDictionary *item in _userData){
         [[self emails] addObject:[item objectForKey:@"email"]];
         [[self passwords] addObject:[item objectForKey:@"password"]];
     }
+    NSLog(@"%@", self.emails);
+    NSLog(@"%@", self.passwords);
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender

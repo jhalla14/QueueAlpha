@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartUpViewController : UIViewController<UITextFieldDelegate>
+@interface StartUpViewController : UIViewController< NSURLSessionDownloadDelegate,UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray *responseData;
 @property (strong, nonatomic) NSString *email;
