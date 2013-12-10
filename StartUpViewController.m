@@ -66,45 +66,63 @@
 }
 - (void) startDownloadingUsers
 {
+    
     NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
+//    NSLog(@"%@", url);
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+//    NSLog(@"%@", request);
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *localfile, NSURLResponse *response, NSError *error) {
-        if (!error) {
-            NSLog(@"Returned with no Error");
-            NSLog(@"File is at location %@", localfile);
-            NSLog(@"URL Response %@", response);
-            
-            //get the data in that local file
-            NSMutableData *data = [NSData dataWithContentsOfURL:localfile];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{self.responseData = data;});
-        }
-//            [self performSelectorOnMainThread:@selector(setResponseData:) withObject:data waitUntilDone:NO];
-//            self.responseData = data;      
+    
+//    NSLog(@"%@", session);
+    
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
+                                                      completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {
+                                                          if (!error) {
+                                                              NSLog(@"Returned with no Error");
+                                                              NSLog(@"File is at location %@", localFile);
+//                                                              NSLog(@"URL Response %@", response);
+                                                              
+                                                              NSMutableData *data = [NSMutableData dataWithContentsOfURL:localFile];
+
+//                                                              NSLog(@"Data is %@", [data description]);
+                                                              
+                                                              dispatch_async(dispatch_get_main_queue(), ^{self.responseData = data;});
+
+//                                                              [self performSelectorOnMainThread:@selector(setResponseData:) withObject:data waitUntilDone:NO];
+                                                          }
     }];
     
     [task resume];
     
-//    [connection start];
-    
-//    NSError *error = nil;
-//    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: [self responseData]
-//                                                         options: NSJSONReadingMutableContainers
-//                                                           error: &error];
-//    
-//    NSLog(@"Json array is %@", jsonArray);
-////    _userData = jsonArray;
-//    
-//    [self checkLoginCredentials];
-    
+    NSLog(@"Repsonse data is %@", self.responseData);
+    [self checkLoginCredentials];
     
 }
+
+
+//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+
+//    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
+//                                                    completionHandler:^(NSURL *localfile, NSURLResponse *response, NSError *error) {
+//        if (!error) {
+//
+//            //get the data in that local file
+////            NSMutableData *data = [NSData dataWithContentsOfURL:localfile];
+////            
+//////            dispatch_async(dispatch_get_main_queue(), ^{self.responseData = data;});
+////            [self performSelectorOnMainThread:@selector(setResponseData:) withObject:data waitUntilDone:NO];
+//        
+//        }
+//    }];
+    
+    
+//    [task resume];
+    
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
