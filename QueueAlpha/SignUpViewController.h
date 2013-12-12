@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UIViewController<NSURLConnectionDelegate, UITextFieldDelegate>
+@interface SignUpViewController : UIViewController<UITextFieldDelegate>
 
 @end

@@ -95,6 +95,7 @@
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
     _activeField = textField;
+    NSLog(@"hello");
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
