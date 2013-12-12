@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul1-lu-YEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1698" y="-110"/>
+            <point key="canvasLocation" x="2118" y="-110"/>
         </scene>
         <!--Sign Up View Controller - Sign Up-->
         <scene sceneID="5iR-JH-1uC">
@@ -235,6 +235,7 @@
                                 </state>
                                 <connections>
                                     <action selector="createButton:" destination="ALr-Kt-FU6" eventType="touchUpInside" id="Ob5-vv-GOp"/>
+                                    <segue destination="MW3-aN-QS3" kind="push" id="Ior-43-gZ7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to Queue!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="203" translatesAutoresizingMaskIntoConstraints="NO" id="0Z4-zN-ItH">
@@ -295,4 +296,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ior-43-gZ7"/>
+    </inferredMetricsTieBreakers>
 </document>

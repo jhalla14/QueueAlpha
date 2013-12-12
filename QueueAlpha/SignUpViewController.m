@@ -24,12 +24,11 @@
 {
     [self postNewUserToDatabase];
     [self resignFirstResponder];
+    //take to the tables page
 }
 
 - (void) postNewUserToDatabase
 {
-    
-    [self retrieveNewUserInfo];
     
     NSString *email = @"email";
     NSString *password = @"password";
@@ -55,7 +54,7 @@
 
     NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:url];
  
-    uploadRequest.HTTPBody = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    uploadRequest.HTTPBody = beta;
     uploadRequest.HTTPMethod = @"POST";
     
 
@@ -69,10 +68,6 @@
     [uploadTask resume];
 }
 
-- (void) retrieveNewUserInfo
-{
-    
-}
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
     NSString *username = @"username";
@@ -87,7 +82,6 @@
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
     _activeField = textField;
-    NSLog(@"hello");
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
