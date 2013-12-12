@@ -30,10 +30,14 @@
 {
     
     [self retrieveNewUserInfo];
-    NSString *email = self.emailTextField.text;
-    NSString *password = self.passwordTextField.text;
     
-    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"email", email, @"password", password, nil];
+    NSString *email = @"email";
+    NSString *password = @"password";
+    
+    NSString *emailEntry = self.emailTextField.text;
+    NSString *passwordEntry = self.passwordTextField.text;
+    
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:passwordEntry, password, emailEntry, email, nil];
     
     NSMutableData *data = [NSMutableData dataWithContentsOfFile:email];
     [data appendData:[NSMutableData dataWithContentsOfFile:password]];
