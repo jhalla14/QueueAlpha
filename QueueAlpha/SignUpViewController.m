@@ -33,13 +33,21 @@
     NSString *email = self.emailTextField.text;
     NSString *password = self.passwordTextField.text;
     
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"email", email, @"password", password, nil];
+    
     NSMutableData *data = [NSMutableData dataWithContentsOfFile:email];
     [data appendData:[NSMutableData dataWithContentsOfFile:password]];
-    
+
     BOOL test = [NSJSONSerialization isValidJSONObject:data];
     NSLog(@"Test is %hhd",test);
     
     NSError *error = nil;
+    NSData *beta = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [NSString stringWithUTF8String:beta.bytes];
+//
+    NSLog(@"json string is %@",jsonString);
+//
+    
 //    NSJSONSerialization *json
     
 //    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data
