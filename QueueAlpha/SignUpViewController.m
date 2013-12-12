@@ -39,46 +39,34 @@
     
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:passwordEntry, password, emailEntry, email, nil];
     
-    NSMutableData *data = [NSMutableData dataWithContentsOfFile:email];
-    [data appendData:[NSMutableData dataWithContentsOfFile:password]];
-
-    BOOL test = [NSJSONSerialization isValidJSONObject:data];
-    NSLog(@"Test is %hhd",test);
-    
     NSError *error = nil;
     NSData *beta = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:NSJSONWritingPrettyPrinted error:&error];
     NSString *jsonString = [NSString stringWithUTF8String:beta.bytes];
-//
+
     NSLog(@"json string is %@",jsonString);
-//
+
     
-//    NSJSONSerialization *json
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-//    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data
-//                                                         options: NSJSONReadingMutableContainers
-//                                                           error: &error];
-//    
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-//
-//    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
-//    
-//    NSURLRequest *uploadRequest = [NSURLRequest requestWithURL:url];
-//    
-//    NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:uploadRequest fromData:data ];
-//    
-//    [uploadTask resume];
+    configuration.HTTPAdditionalHeaders = @{@"Content-Type": @"application/json"};
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+
+    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
+
+    NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:url];
+ 
+    uploadRequest.HTTPBody = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    uploadRequest.HTTPMethod = @"POST";
     
-    
-//
-////    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-//    
-////    [request setHTTPPMethod: @"POST"];
-//    
-//    
-//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+
+    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:uploadRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        if (!error) {
+            NSLog(@"No Error");
+        }
+        
+    }];
+
+    [uploadTask resume];
 }
 
 - (void) retrieveNewUserInfo
