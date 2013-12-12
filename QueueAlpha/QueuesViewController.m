@@ -8,11 +8,47 @@
 
 #import "QueuesViewController.h"
 
-@interface QueuesViewController ()
+@interface QueuesViewController () <ScrollingCellDelegate>
 
 @end
 
 @implementation QueuesViewController
+
+#pragma mark ScrollingCellDelegate
+
+- (void) scrollingCellDidBeginPulling:(ScrollingCell *)cell
+{
+//    [_outerScrollView setScrollEnabled:NO];
+    
+}
+
+- (void) scrollingCell:(ScrollingCell *)cell didChangePullOffset:(CGFloat)offset
+{
+    
+}
+
+- (void) scrollingCellDidEndPulling:(ScrollingCell *)cell
+{
+//    [_outerScrollView setScrollEnabled:YES];
+}
+
+
+#pragma mark UICollectionViewDataSource
+
+-(NSInteger) collectionView:(UICollectionView *) cv numberOfItemsInSection:(NSInteger)section
+{
+    return 8;
+}
+
+- (UICollectionViewCell *) collectionView: (UICollectionView *) cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ScrollingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    
+    cell.color = [UIColor redColor];
+    cell.delegate = self;
+    
+    return cell;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
