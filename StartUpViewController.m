@@ -77,18 +77,10 @@
 {
     
     NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
-//    NSLog(@"%@", url);
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    NSLog(@"%@", request);
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    
-//    NSLog(@"%@", session);
-    NSURLSessionDownloadTask *tasl = [session downloadTaskWithRequest:request];
-    
-    [tasl resume];
     
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
                                                       completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {

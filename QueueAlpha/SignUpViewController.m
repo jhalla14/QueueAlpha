@@ -28,8 +28,37 @@
 
 - (void) postNewUserToDatabase
 {
-//    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX", @"email" : @"email", @"password" : @"password"];
+    
+    [self retrieveNewUserInfo];
+    NSString *email = self.emailTextField.text;
+    NSString *password = self.passwordTextField.text;
+    
+    NSMutableData *data = [NSMutableData dataWithContentsOfFile:email];
+    [data appendData:[NSMutableData dataWithContentsOfFile:password]];
+    
+    BOOL test = [NSJSONSerialization isValidJSONObject:data];
+    NSLog(@"Test is %hhd",test);
+    
+    NSError *error = nil;
+//    NSJSONSerialization *json
+    
+//    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data
+//                                                         options: NSJSONReadingMutableContainers
+//                                                           error: &error];
 //    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+//
+//    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
+//    
+//    NSURLRequest *uploadRequest = [NSURLRequest requestWithURL:url];
+//    
+//    NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:uploadRequest fromData:data ];
+//    
+//    [uploadTask resume];
+    
+    
+//
 ////    NSURLRequest *request = [NSURLRequest requestWithURL:url];
 //    
 //    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -40,47 +69,8 @@
 //    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-#pragma mark NSURLConnection Delegate Methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    // A response has been received, this is where we initialize the instance var you created
-    // so that we can append data to it in the didReceiveData method
-    // Furthermore, this method is called each time there is a redirect so reinitializing it
-    // also serves to clear it
-//    _responseData = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // Append the new data to the instance variable you declared
-//    [_responseData appendData:data];
-}
-
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
-                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
-    // Return nil to indicate not necessary to store a cached response for this connection
-    return nil;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // The request is complete and data has been received
-    // You can parse the stuff in your instance variable now
-    
-//    NSError *error = nil;
-//    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: _responseData
-//                                                         options: NSJSONReadingMutableContainers
-//                                                           error: &error];
-//    
-//    _userData = jsonArray;
-    
-    //releasing the connection object
-    _URLconnection= nil;
-    
-}
-
-- (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+- (void) retrieveNewUserInfo
 {
-    
-    
     
 }
 
@@ -96,17 +86,17 @@
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    
+    _activeField = textField;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField
 {
-    
+    _activeField = nil;
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *) textField
 {
-    [self resignFirstResponder];
+    [textField resignFirstResponder];
     return YES;
 }
 
