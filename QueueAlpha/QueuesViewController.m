@@ -37,14 +37,15 @@
 
 -(NSInteger) collectionView:(UICollectionView *) cv numberOfItemsInSection:(NSInteger)section
 {
-    return 8;
+    return 80;
 }
 
 - (UICollectionViewCell *) collectionView: (UICollectionView *) cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ScrollingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.color = [UIColor redColor];
+//    cell.color = [UIColor greenColor];
+    [cell setBackgroundColor:[UIColor blueColor]];
     cell.delegate = self;
     
     return cell;
