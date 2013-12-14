@@ -27,6 +27,10 @@
     //take to the tables page
 }
 
+#define EMAIL "email";
+#define PASSWORD "password";
+#define NAME "name";
+#define AFFLIATION "affliation";
 - (void) postNewUserToDatabase
 {
     
@@ -35,6 +39,8 @@
     
     NSString *emailEntry = self.emailTextField.text;
     NSString *passwordEntry = self.passwordTextField.text;
+    NSString *nameEntry = self.nameTextField.text;
+    NSString *affliationEntry = self.affliationTextfield.text;
     
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:passwordEntry, password, emailEntry, email, nil];
     
