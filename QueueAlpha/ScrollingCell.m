@@ -8,6 +8,7 @@
 
 #import "ScrollingCell.h"
 #define PULL_THRESHOLD 60
+
 @implementation ScrollingCell
 {
     UIScrollView *_scrollView;
@@ -51,6 +52,8 @@
 {
     [self scrollingEnded];
 }
+
+#pragma mark Setup & Initalization
 
 - (id)initWithFrame:(CGRect)frame
 {
