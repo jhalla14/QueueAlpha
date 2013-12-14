@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ScrollingCell.h"
 
-@interface QueuesViewController : UIViewController
+@interface QueuesViewController : UIViewController<UICollectionViewDataSource>
 
 @end
