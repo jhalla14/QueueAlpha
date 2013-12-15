@@ -28,18 +28,18 @@
 - (void) scrollViewDidScroll:(UIScrollView *) scrollView
 {
 //    NSLog(@"did scroll");
-//    CGFloat offset = scrollView.contentOffset.x;
-//    
-//    if (offset > PULL_THRESHOLD && !_pulling){
-//        [_delegate scrollingCellDidBeginPulling:self];
-//        _pulling = YES;
-//    }
-//    
-//    if (_pulling) {
-//        CGFloat pullOffset = MAX(0,offset - PULL_THRESHOLD);
-//        
-//        [_delegate scrollingCell:self didChangePullOffset:pullOffset];
-//    }
+    CGFloat offset = scrollView.contentOffset.x;
+    
+    if (offset > PULL_THRESHOLD && !_pulling){
+        [_delegate scrollingCellDidBeginPulling:self];
+        _pulling = YES;
+    }
+    
+    if (_pulling) {
+        CGFloat pullOffset = MAX(0,offset - PULL_THRESHOLD);
+        
+        [_delegate scrollingCell:self didChangePullOffset:pullOffset];
+    }
 }
 
 - (void) scrollingEnded
