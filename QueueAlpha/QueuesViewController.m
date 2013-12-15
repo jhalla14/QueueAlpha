@@ -42,10 +42,11 @@
 
 - (UICollectionViewCell *) collectionView: (UICollectionView *) cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"creating scrolling cells");
     ScrollingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.color = [UIColor greenColor];
-//    [cell setBackgroundColor:[UIColor blueColor]];
+//    cell.color = [UIColor greenColor];
+    [cell setBackgroundColor:[UIColor blueColor]];
     cell.delegate = self;
     
     return cell;

@@ -18,28 +18,28 @@
 }
 
 #pragma mark UIScrollViewDelegate
-
-- (void) setColor:(UIColor *)color
-{
-    _color = color;
-    _colorView.backgroundColor = color;
-}
+//
+//- (void) setColor:(UIColor *)color
+//{
+//    _color = color;
+//    _colorView.backgroundColor = color;
+//}
 
 - (void) scrollViewDidScroll:(UIScrollView *) scrollView
 {
-    NSLog(@"did scroll");
-    CGFloat offset = scrollView.contentOffset.x;
-    
-    if (offset > PULL_THRESHOLD && !_pulling){
-        [_delegate scrollingCellDidBeginPulling:self];
-        _pulling = YES;
-    }
-    
-    if (_pulling) {
-        CGFloat pullOffset = MAX(0,offset - PULL_THRESHOLD);
-        
-        [_delegate scrollingCell:self didChangePullOffset:pullOffset];
-    }
+//    NSLog(@"did scroll");
+//    CGFloat offset = scrollView.contentOffset.x;
+//    
+//    if (offset > PULL_THRESHOLD && !_pulling){
+//        [_delegate scrollingCellDidBeginPulling:self];
+//        _pulling = YES;
+//    }
+//    
+//    if (_pulling) {
+//        CGFloat pullOffset = MAX(0,offset - PULL_THRESHOLD);
+//        
+//        [_delegate scrollingCell:self didChangePullOffset:pullOffset];
+//    }
 }
 
 - (void) scrollingEnded
@@ -65,10 +65,11 @@
 
 #pragma mark Setup & Initalization
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
-    if (self) {
+    NSLog(@"Init with Coder");
+//    self = [super initWithFrame:frame];
+    if (self = [super initWithCoder:aDecoder]) {
         // Initialization code
         _colorView = [[UIView alloc] init];
         _scrollView = [[UIScrollView alloc] init];
@@ -76,13 +77,24 @@
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = YES;
 
-        NSLog(@"%@", _scrollView);
+//        NSLog(@"%@", _scrollView);
         
         [self.contentView addSubview:_scrollView];
         [_scrollView addSubview:_colorView];
         
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    UIView * contentView = self.contentView;
+    CGRect bounds = contentView.bounds;
+    
+    CGFloat pageWidth = bounds.size.width + PULL_THRESHOLD;
+    _scrollView.frame = CGRectMake(0, 0, pageWidth, bounds.size.height);
+    _scrollView.contentSize = CGSizeMake(pageWidth * 2, bounds.size.height);
+    
+    _colorView.frame = [_scrollView convertRect:bounds fromView:contentView];
 }
 
 /*
