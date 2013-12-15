@@ -18,22 +18,18 @@
 
 - (void) scrollingCellDidBeginPulling:(ScrollingCell *)cell
 {
-    [self.scrollView setScrollEnabled:NO];
-//    [_outerScrollView setScrollEnablded:NO];
-//    [self.outerScrollView setScrollEnabled:NO];
-    
+//    [self.scrollView setScrollEnabled:NO];
     
 }
 
 - (void) scrollingCell:(ScrollingCell *)cell didChangePullOffset:(CGFloat)offset
 {
-    
+   [self.scrollView setContentOffset:CGPointMake(offset, 0)]; 
 }
 
 - (void) scrollingCellDidEndPulling:(ScrollingCell *)cell
 {
-    [self.scrollView setScrollEnabled:YES];
-//    [_outerScrollView setScrollEnabled:YES];
+//    [self.scrollView setScrollEnabled:YES];
 }
 
 
@@ -69,9 +65,12 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    [self.collectionView registerClass:[ScrollingCell class] forCellWithReuseIdentifier:@"cell"];
+//    self.scrollView.contentSize = CGSizeMake(2 * self.view.frame.size.width, self.view.frame.size.height);
 	// Do any additional setup after loading the view.
 }
 

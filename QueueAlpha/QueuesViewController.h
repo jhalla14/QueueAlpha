@@ -10,8 +10,8 @@
 #import "ScrollingCell.h"
 
 @interface QueuesViewController : UIViewController<UICollectionViewDataSource>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (retain, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (retain, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 
 @end
