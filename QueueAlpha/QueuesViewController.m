@@ -18,7 +18,10 @@
 
 - (void) scrollingCellDidBeginPulling:(ScrollingCell *)cell
 {
-//    [_outerScrollView setScrollEnabled:NO];
+    [self.scrollView setScrollEnabled:NO];
+//    [_outerScrollView setScrollEnablded:NO];
+//    [self.outerScrollView setScrollEnabled:NO];
+    
     
 }
 
@@ -29,6 +32,7 @@
 
 - (void) scrollingCellDidEndPulling:(ScrollingCell *)cell
 {
+    [self.scrollView setScrollEnabled:YES];
 //    [_outerScrollView setScrollEnabled:YES];
 }
 
@@ -46,7 +50,11 @@
     ScrollingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
 //    cell.color = [UIColor greenColor];
-    [cell setBackgroundColor:[UIColor blueColor]];
+    CGFloat red = (CGFloat)arc4random() / (CGFloat)RAND_MAX;;
+    CGFloat green = (CGFloat)arc4random() / (CGFloat)RAND_MAX;;
+    CGFloat blue = (CGFloat)arc4random() / (CGFloat)RAND_MAX;;
+//    cell.color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+    [cell setBackgroundColor:[UIColor colorWithRed:red green:green blue:blue alpha:1.0f]];
     cell.delegate = self;
     
     return cell;

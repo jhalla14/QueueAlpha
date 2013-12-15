@@ -178,6 +178,11 @@
                     <navigationItem key="navigationItem" title="Tables" id="wxJ-qa-U3K">
                         <barButtonItem key="rightBarButtonItem" title="Create" id="mfK-oj-UtN"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="YPz-UD-eDN" id="lRH-gW-QWC"/>
+                        <outlet property="flowLayout" destination="B4M-Mw-Prz" id="L2N-fJ-nnI"/>
+                        <outlet property="scrollView" destination="Vwz-8Q-7f7" id="0Hd-yO-e1u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ul1-lu-YEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
