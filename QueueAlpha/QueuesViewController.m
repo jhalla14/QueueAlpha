@@ -44,8 +44,8 @@
 {
     ScrollingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-//    cell.color = [UIColor greenColor];
-    [cell setBackgroundColor:[UIColor blueColor]];
+    cell.color = [UIColor greenColor];
+//    [cell setBackgroundColor:[UIColor blueColor]];
     cell.delegate = self;
     
     return cell;

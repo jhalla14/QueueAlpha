@@ -19,8 +19,15 @@
 
 #pragma mark UIScrollViewDelegate
 
+- (void) setColor:(UIColor *)color
+{
+    _color = color;
+    _colorView.backgroundColor = color;
+}
+
 - (void) scrollViewDidScroll:(UIScrollView *) scrollView
 {
+    NSLog(@"did scroll");
     CGFloat offset = scrollView.contentOffset.x;
     
     if (offset > PULL_THRESHOLD && !_pulling){
@@ -37,12 +44,14 @@
 
 - (void) scrollingEnded
 {
+    NSLog(@"hello");
     [_delegate scrollingCellDidEndPulling:self];
     _pulling = NO;
 }
 
 - (void) scrollViewDidEndDragging:(UIScrollView *) scrollView willDecelerate:(BOOL)decelerate
 {
+    NSLog(@"sup");
     if (!decelerate) {
         [self scrollingEnded];
     }
@@ -50,6 +59,7 @@
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *) scrollView
 {
+    NSLog(@"anybody");
     [self scrollingEnded];
 }
 
@@ -64,8 +74,9 @@
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.delegate = self;
         _scrollView.pagingEnabled = YES;
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        
+        _scrollView.showsHorizontalScrollIndicator = YES;
+
+        NSLog(@"%@", _scrollView);
         
         [self.contentView addSubview:_scrollView];
         [_scrollView addSubview:_colorView];

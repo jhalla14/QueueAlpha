@@ -168,7 +168,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="MW3-aN-QS3" id="DKy-Ph-Lox"/>
+                                    <outlet property="dataSource" destination="MW3-aN-QS3" id="qtD-b3-a7h"/>
                                     <outlet property="delegate" destination="MW3-aN-QS3" id="jQ1-D6-NoI"/>
                                 </connections>
                             </collectionView>
