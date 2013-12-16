@@ -13,7 +13,8 @@
 @interface ScrollingCell : UICollectionViewCell<UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIColor *color;
-@property (assign, nonatomic) id<ScrollingCellDelegate> delegate;
+@property (weak, nonatomic) id<ScrollingCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *tableLabel;
 
 @end
 

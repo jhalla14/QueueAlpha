@@ -22,12 +22,6 @@
     [self.scrollView setScrollEnabled:NO];
 }
 
-//- (void) scrollingCellDidBeginPulling:(ScrollingCell *)cell
-//{
-////    [self.scrollView setScrollEnabled:NO];
-//    NSLog(@"began pulling");
-//}
-
 - (void) scrollingCell:(ScrollingCell *)cell didChangePullOffset:(CGFloat)offset
 {
    [self.scrollView setContentOffset:CGPointMake(offset, 0)];
@@ -46,6 +40,7 @@
 
 -(NSInteger) collectionView:(UICollectionView *) cv numberOfItemsInSection:(NSInteger)section
 {
+    //need to make an NSURL session for requesting the number of tables / cells to create
     return 80;
 }
 
@@ -61,7 +56,7 @@
 //    cell.color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
     [cell setBackgroundColor:[UIColor colorWithRed:red green:green blue:blue alpha:1.0f]];
     cell.delegate = self;
-    
+    cell.tableLabel.text = [NSString stringWithFormat:@"Table %ld",(long)indexPath.item];
     return cell;
 }
 
