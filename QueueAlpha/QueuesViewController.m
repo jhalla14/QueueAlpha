@@ -16,20 +16,29 @@
 
 #pragma mark ScrollingCellDelegate
 
-- (void) scrollingCellDidBeginPulling:(ScrollingCell *)cell
+- (void) scrollingCellDidBeginPulling:(ScrollingCell *) cell
 {
-//    [self.scrollView setScrollEnabled:NO];
-    
+    NSLog(@"began pulling");
+    [self.scrollView setScrollEnabled:NO];
 }
+
+//- (void) scrollingCellDidBeginPulling:(ScrollingCell *)cell
+//{
+////    [self.scrollView setScrollEnabled:NO];
+//    NSLog(@"began pulling");
+//}
 
 - (void) scrollingCell:(ScrollingCell *)cell didChangePullOffset:(CGFloat)offset
 {
-   [self.scrollView setContentOffset:CGPointMake(offset, 0)]; 
+   [self.scrollView setContentOffset:CGPointMake(offset, 0)];
+    NSLog(@"pull offset");
 }
 
 - (void) scrollingCellDidEndPulling:(ScrollingCell *)cell
 {
-//    [self.scrollView setScrollEnabled:YES];
+     NSLog(@"ended pulling");
+    [self.scrollView setScrollEnabled:YES];
+   
 }
 
 

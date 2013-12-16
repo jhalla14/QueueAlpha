@@ -13,7 +13,7 @@
 @interface ScrollingCell : UICollectionViewCell<UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIColor *color;
-@property (weak, nonatomic) id<ScrollingCellDelegate> delegate;
+@property (assign, nonatomic) id<ScrollingCellDelegate> delegate;
 
 @end
 
