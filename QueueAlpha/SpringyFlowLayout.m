@@ -31,7 +31,7 @@
         spring.damping = .5;
         spring.frequency = .8;
         
-        [_dynamicAnimator addBehavior:spring];
+//        [_dynamicAnimator addBehavior:spring];
     }
 
 }

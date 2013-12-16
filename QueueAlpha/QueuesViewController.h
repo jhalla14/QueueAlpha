@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ScrollingCell.h"
+#import "SpringyFlowLayout.h"
 
 @interface QueuesViewController : UIViewController<UICollectionViewDataSource>
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (retain, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
+@property (retain, nonatomic) IBOutlet SpringyFlowLayout *flowLayout;
 
 @end
