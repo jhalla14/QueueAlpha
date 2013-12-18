@@ -23,6 +23,7 @@
     }
     
     CGSize contentSize = [self collectionViewContentSize];
+    NSLog(@"Content size height is %f, width %f", contentSize.height, contentSize.width);
     NSArray *items = [super layoutAttributesForElementsInRect:CGRectMake(0, 0, contentSize.width, contentSize.height)];
     
     for (UICollectionViewLayoutAttributes *item in items) {
