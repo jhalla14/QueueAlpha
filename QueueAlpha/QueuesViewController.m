@@ -75,6 +75,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    SpringyFlowLayout *flowLayout = [[SpringyFlowLayout alloc] init];
+    [flowLayout setItemSize:CGSizeMake(200, 200)];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    
 //    [self.collectionView registerClass:[ScrollingCell class] forCellWithReuseIdentifier:@"cell"];
 //    self.scrollView.contentSize = CGSizeMake(2 * self.view.frame.size.width, self.view.frame.size.height);
 	// Do any additional setup after loading the view.

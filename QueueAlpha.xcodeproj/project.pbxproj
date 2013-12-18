@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F009DC58185A53750094154D /* ScrollingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F009DC57185A53750094154D /* ScrollingCell.m */; };
 		F09179F61847DD1D00AF308F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F51847DD1D00AF308F /* Foundation.framework */; };
 		F09179F81847DD1D00AF308F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F71847DD1D00AF308F /* CoreGraphics.framework */; };
 		F09179FA1847DD1D00AF308F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F91847DD1D00AF308F /* UIKit.framework */; };
@@ -14,8 +15,6 @@
 		F0917A021847DD1D00AF308F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A011847DD1D00AF308F /* main.m */; };
 		F0917A061847DD1D00AF308F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A051847DD1D00AF308F /* AppDelegate.m */; };
 		F0917A091847DD1D00AF308F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0917A071847DD1D00AF308F /* Main.storyboard */; };
-		F0917A0C1847DD1D00AF308F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A0B1847DD1D00AF308F /* FirstViewController.m */; };
-		F0917A0F1847DD1D00AF308F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A0E1847DD1D00AF308F /* SecondViewController.m */; };
 		F0917A111847DD1D00AF308F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0917A101847DD1D00AF308F /* Images.xcassets */; };
 		F0917A181847DD1E00AF308F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0917A171847DD1E00AF308F /* XCTest.framework */; };
 		F0917A191847DD1E00AF308F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F51847DD1D00AF308F /* Foundation.framework */; };
@@ -29,6 +28,7 @@
 		F0917A3E184E5A1900AF308F /* StartUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A3D184E5A1900AF308F /* StartUpViewController.m */; };
 		F0917A441850F99C00AF308F /* QueuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A431850F99C00AF308F /* QueuesViewController.m */; };
 		F0917A471850FA1400AF308F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A461850FA1400AF308F /* SignUpViewController.m */; };
+		F09DD370185FC15300471717 /* SpringyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F09DD36F185FC15300471717 /* SpringyFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F009DC56185A53750094154D /* ScrollingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingCell.h; sourceTree = "<group>"; };
+		F009DC57185A53750094154D /* ScrollingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingCell.m; sourceTree = "<group>"; };
 		F09179F21847DD1D00AF308F /* QueueAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueueAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09179F51847DD1D00AF308F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F09179F71847DD1D00AF308F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,10 +55,6 @@
 		F0917A041847DD1D00AF308F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0917A051847DD1D00AF308F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F0917A081847DD1D00AF308F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F0917A0A1847DD1D00AF308F /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		F0917A0B1847DD1D00AF308F /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		F0917A0D1847DD1D00AF308F /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		F0917A0E1847DD1D00AF308F /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		F0917A101847DD1D00AF308F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0917A161847DD1E00AF308F /* QueueAlphaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QueueAlphaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0917A171847DD1E00AF308F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -77,6 +75,8 @@
 		F0917A431850F99C00AF308F /* QueuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueuesViewController.m; sourceTree = "<group>"; };
 		F0917A451850FA1400AF308F /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F0917A461850FA1400AF308F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		F09DD36E185FC15300471717 /* SpringyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringyFlowLayout.h; sourceTree = "<group>"; };
+		F09DD36F185FC15300471717 /* SpringyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringyFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,16 +147,16 @@
 				F0917A3C184E5A1900AF308F /* StartUpViewController.h */,
 				F0917A3D184E5A1900AF308F /* StartUpViewController.m */,
 				F0917A071847DD1D00AF308F /* Main.storyboard */,
+				F009DC56185A53750094154D /* ScrollingCell.h */,
+				F009DC57185A53750094154D /* ScrollingCell.m */,
 				F0917A451850FA1400AF308F /* SignUpViewController.h */,
 				F0917A461850FA1400AF308F /* SignUpViewController.m */,
 				F0917A421850F99C00AF308F /* QueuesViewController.h */,
 				F0917A431850F99C00AF308F /* QueuesViewController.m */,
-				F0917A0A1847DD1D00AF308F /* FirstViewController.h */,
-				F0917A0B1847DD1D00AF308F /* FirstViewController.m */,
-				F0917A0D1847DD1D00AF308F /* SecondViewController.h */,
-				F0917A0E1847DD1D00AF308F /* SecondViewController.m */,
 				F0917A101847DD1D00AF308F /* Images.xcassets */,
 				F09179FC1847DD1D00AF308F /* Supporting Files */,
+				F09DD36E185FC15300471717 /* SpringyFlowLayout.h */,
+				F09DD36F185FC15300471717 /* SpringyFlowLayout.m */,
 			);
 			path = QueueAlpha;
 			sourceTree = "<group>";
@@ -290,16 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0917A32184812C900AF308F /* Table.m in Sources */,
-				F0917A0F1847DD1D00AF308F /* SecondViewController.m in Sources */,
 				F0917A3E184E5A1900AF308F /* StartUpViewController.m in Sources */,
 				F0917A061847DD1D00AF308F /* AppDelegate.m in Sources */,
-				F0917A0C1847DD1D00AF308F /* FirstViewController.m in Sources */,
 				F0917A021847DD1D00AF308F /* main.m in Sources */,
 				F0917A441850F99C00AF308F /* QueuesViewController.m in Sources */,
+				F09DD370185FC15300471717 /* SpringyFlowLayout.m in Sources */,
 				F0917A38184BE9C300AF308F /* QueueModel.m in Sources */,
 				F0917A351849512200AF308F /* Team.m in Sources */,
 				F0917A471850FA1400AF308F /* SignUpViewController.m in Sources */,
 				F0917A2F1847DEE000AF308F /* Player.m in Sources */,
+				F009DC58185A53750094154D /* ScrollingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +510,7 @@
 				F0917A291847DD1E00AF308F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0917A2A1847DD1E00AF308F /* Build configuration list for PBXNativeTarget "QueueAlphaTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +519,7 @@
 				F0917A2C1847DD1E00AF308F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
