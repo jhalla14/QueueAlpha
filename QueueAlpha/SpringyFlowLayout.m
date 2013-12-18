@@ -27,11 +27,14 @@
     
     for (UICollectionViewLayoutAttributes *item in items) {
         UIAttachmentBehavior *spring = [[UIAttachmentBehavior alloc] initWithItem:item attachedToAnchor:[item center]];
+        
+        NSLog(@"Spring is %@", spring);
+        
         spring.length = 0;
         spring.damping = .5;
         spring.frequency = .8;
-        
-//        [_dynamicAnimator addBehavior:spring];
+
+        [_dynamicAnimator addBehavior:spring];
     }
 
 }
