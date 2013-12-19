@@ -7,6 +7,7 @@
 //
 
 #import "StartUpViewController.h"
+#import <Parse/Parse.h>
 @interface StartUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
@@ -226,6 +227,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"bar" forKey:@"foo"];
+    [testObject save];
+    
     // Do any additional setup after loading the view.
     [self registerForKeyboardNotifications];
 }
