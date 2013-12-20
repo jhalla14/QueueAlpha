@@ -51,38 +51,6 @@
     userInformation[@"name"] = nameEntry;
     
     [userInformation saveInBackground];
-    
-    
-    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:passwordEntry, password, emailEntry, email, nil];
-    
-    NSError *error = nil;
-    NSData *beta = [NSJSONSerialization dataWithJSONObject:jsonDictionary options:NSJSONWritingPrettyPrinted error:&error];
-    NSString *jsonString = [NSString stringWithUTF8String:beta.bytes];
-
-    NSLog(@"json string is %@",jsonString);
-
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    configuration.HTTPAdditionalHeaders = @{@"Content-Type": @"application/json"};
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-
-    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
-
-    NSMutableURLRequest *uploadRequest = [NSMutableURLRequest requestWithURL:url];
- 
-    uploadRequest.HTTPBody = beta;
-    uploadRequest.HTTPMethod = @"POST";
-    
-
-    NSURLSessionDataTask *uploadTask = [session dataTaskWithRequest:uploadRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-        if (!error) {
-            NSLog(@"No Error");
-        }
-        
-    }];
-
-    [uploadTask resume];
 }
 
 

@@ -78,11 +78,22 @@
 {
     
     
-//    PFQuery *query = [PFQuery queryWithClassName:@"GameScore"];
-//    [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject *gameScore, NSError *error) {
-//        // Do something with the returned PFObject in the gameScore variable.
-//        NSLog(@"%@", gameScore);
-//    }];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserInformation"];
+    [query whereKey:@"name" equalTo:@"test1"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                NSLog(@"%@", object[@"name"]);
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
     
     NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -233,13 +244,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    [testObject setObject:@"bar" forKey:@"foo"];
-    [testObject save];
-    
     // Do any additional setup after loading the view.
+    [super viewDidLoad];
     [self registerForKeyboardNotifications];
 }
 
