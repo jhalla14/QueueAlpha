@@ -7,6 +7,7 @@
 //
 
 #import "SignUpViewController.h"
+#import <Parse/Parse.h>
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -41,6 +42,16 @@
     NSString *passwordEntry = self.passwordTextField.text;
     NSString *nameEntry = self.nameTextField.text;
     NSString *affliationEntry = self.affliationTextfield.text;
+    
+    PFObject *userInformation = [PFObject objectWithClassName:@"UserInformation"];
+    
+    userInformation[email] = emailEntry;
+    userInformation[password] = passwordEntry;
+    userInformation[@"afflication"] = affliationEntry;
+    userInformation[@"name"] = nameEntry;
+    
+    [userInformation saveInBackground];
+    
     
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:passwordEntry, password, emailEntry, email, nil];
     

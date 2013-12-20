@@ -77,6 +77,13 @@
 - (void) startDownloadingUsers
 {
     
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"GameScore"];
+//    [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject *gameScore, NSError *error) {
+//        // Do something with the returned PFObject in the gameScore variable.
+//        NSLog(@"%@", gameScore);
+//    }];
+    
     NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
