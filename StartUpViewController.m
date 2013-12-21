@@ -25,6 +25,9 @@
 @end
 
 @implementation StartUpViewController
+{
+    BOOL loginCredentialsAlreadyExist;
+}
 
 - (NSArray *) responseData
 {
@@ -79,7 +82,7 @@
     
     
     PFQuery *query = [PFQuery queryWithClassName:@"UserInformation"];
-    [query whereKey:@"name" equalTo:@"test1"];
+    [query whereKey:@"name" notEqualTo:@""];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -99,20 +102,6 @@
     
 }
 
-- (void) URLSession:(NSURLSession *) session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-{
-
-}
-
-- (void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
-{
-    
-}
-
-- (void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
-{
-    NSLog(@"Completed download tasl");
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -122,6 +111,8 @@
     }
 }
 
+static NSString *NAME = @"name";
+static NSString *PASSWORD = @"password";
 - (void) checkLoginCredentials
 {
 //    NSLog(@"Repsonse data in login credentials is %@", self.responseData);
@@ -129,31 +120,33 @@
 //        [[self emails] addObject:[item objectForKey:@"email"]];
 //        [[self passwords] addObject:[item objectForKey:@"password"]];
 //    }
-    
-//    for (PFObject *object in _userData){
-//        NSLog(@"Name is %@", [_userData g]);
-//    }
-    
-    NSLog(@"%@", self.emails);
-    NSLog(@"%@", self.passwords);
+
+    NSLog(@"%@",_userData);
+    for (PFObject *object in _userData){
+        
+        NSString *email = object[@"email"];
+        NSString *password = object[@"password"];
+
+        if ([email isEqualToString:self.emailEntryField.text]) {
+            if ([password isEqualToString:self.passwordEntryField.text]) {
+                loginCredentialsAlreadyExist = YES;
+                NSLog(@"User exists in database");
+            }
+        }
+        
+//        NSLog(@"Name is %@", object[@"name"]);
+//        NSLog(@"Password is %@", object[@"password"]);
+    }
+//    
+//    NSLog(@"%@", self.emails);
+//    NSLog(@"%@", self.passwords);
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    
-    NSString *email = [self.emailEntryField text];
-    NSString *password = [self.passwordEntryField text];
-    
     if ([identifier isEqualToString:@"UserAccountExists"]) {
-        for (NSString *emailString in [self emails]){
-            if ([emailString isEqualToString:email]){
-                for (NSString *passwordString in [self passwords]){
-                    if ([passwordString isEqualToString:password]) {
-                        
-                        return YES;
-                    }
-                }
-            }
+        if (loginCredentialsAlreadyExist) {
+            return YES;
         }
         
     } else if ([identifier isEqualToString:@"SignUp"]){
