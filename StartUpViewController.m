@@ -89,36 +89,13 @@
                 NSLog(@"%@", object.objectId);
                 NSLog(@"%@", object[@"name"]);
             }
+            
+            [self performSelectorOnMainThread:@selector(setUserData:) withObject:objects waitUntilDone:NO];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
-    
-    NSURL *url = [NSURL URLWithString:@"https://api.mongolab.com/api/1/databases/queuealpha/collections/Users?apiKey=ao0BI_lXpgTOsoiKy4THrI3Xi-fQycVX"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-    
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
-                                                      completionHandler:^(NSURL *localFile, NSURLResponse *response, NSError *error) {
-                                                          if (!error) {
-                                                              NSMutableData *data = [NSMutableData dataWithContentsOfURL:localFile];
-                                                              
-                                                              NSError *error = nil;
-                                                              NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data
-                                                                                                                   options: NSJSONReadingMutableContainers
-                                                                                                                     error: &error];
-                                                              
-//                                                              dispatch_async(dispatch_get_main_queue(), ^{self.responseData = jsonArray;});
-
-                                                              [self performSelectorOnMainThread:@selector(setUserData:) withObject:jsonArray waitUntilDone:NO];
-//                                                              [self checkLoginCredentials];
-                                                          }
-    }];
-    
-    [task resume];
     
 }
 
@@ -148,10 +125,15 @@
 - (void) checkLoginCredentials
 {
 //    NSLog(@"Repsonse data in login credentials is %@", self.responseData);
-    for (NSDictionary *item in _userData){
-        [[self emails] addObject:[item objectForKey:@"email"]];
-        [[self passwords] addObject:[item objectForKey:@"password"]];
-    }
+//    for (NSDictionary *item in _userData){
+//        [[self emails] addObject:[item objectForKey:@"email"]];
+//        [[self passwords] addObject:[item objectForKey:@"password"]];
+//    }
+    
+//    for (PFObject *object in _userData){
+//        NSLog(@"Name is %@", [_userData g]);
+//    }
+    
     NSLog(@"%@", self.emails);
     NSLog(@"%@", self.passwords);
 }
