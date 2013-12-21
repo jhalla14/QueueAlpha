@@ -59,8 +59,24 @@
     NSLog(@"%ld", (long)indexPath.item);
     cell.tableLabel.text = [NSString stringWithFormat:@"Table %ld",(long)indexPath.item];
 
-//    cell.tableLabel.text = @"Table";
     return cell;
+}
+
+- (void) editAdminOptions:(id)sender
+{
+    NSLog(@"Editing admin options");
+    UIViewController *AdminViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AdminViewControllerId"];
+
+    [self.navigationController pushViewController: AdminViewController animated:YES];
+}
+
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"AdminOptions"]) {
+        NSLog(@"Going to Admin Page");
+        return YES;
+    }
+    return NO;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -78,6 +94,8 @@
     [super viewDidLoad];
 
 	// Do any additional setup after loading the view.
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.navigationItem.rightBarButtonItem setAction:@selector(editAdminOptions:)];
 }
 
 - (void)didReceiveMemoryWarning

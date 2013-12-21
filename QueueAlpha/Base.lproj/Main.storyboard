@@ -134,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="715" y="-110"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller - Admin Options-->
         <scene sceneID="Ink-bH-W6r">
             <objects>
-                <viewController id="5g4-rx-T6Z" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdminViewControllerId" id="5g4-rx-T6Z" customClass="AdminViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q7B-A9-j1S"/>
                         <viewControllerLayoutGuide type="bottom" id="FA6-lg-Ypw"/>
@@ -147,10 +147,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Admin Options" id="d70-ae-qJH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsR-c5-qKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1698" y="-616"/>
+            <point key="canvasLocation" x="2562" y="-110"/>
         </scene>
         <!--Queues View Controller - Tables-->
         <scene sceneID="rQX-fm-FCr">
@@ -205,9 +206,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tables" id="wxJ-qa-U3K">
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="mfK-oj-UtN"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Tables" id="wxJ-qa-U3K"/>
                     <connections>
                         <outlet property="collectionView" destination="YPz-UD-eDN" id="lRH-gW-QWC"/>
                         <outlet property="flowLayout" destination="B4M-Mw-Prz" id="L2N-fJ-nnI"/>
