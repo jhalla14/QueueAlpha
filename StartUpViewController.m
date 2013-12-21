@@ -88,10 +88,10 @@
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
             // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-                NSLog(@"%@", object[@"name"]);
-            }
+//            for (PFObject *object in objects) {
+//                NSLog(@"%@", object.objectId);
+//                NSLog(@"%@", object[@"name"]);
+//            }
             
             [self performSelectorOnMainThread:@selector(setUserData:) withObject:objects waitUntilDone:NO];
         } else {
@@ -111,15 +111,8 @@
     }
 }
 
-static NSString *NAME = @"name";
-static NSString *PASSWORD = @"password";
 - (void) checkLoginCredentials
 {
-//    NSLog(@"Repsonse data in login credentials is %@", self.responseData);
-//    for (NSDictionary *item in _userData){
-//        [[self emails] addObject:[item objectForKey:@"email"]];
-//        [[self passwords] addObject:[item objectForKey:@"password"]];
-//    }
 
     NSLog(@"%@",_userData);
     for (PFObject *object in _userData){
@@ -133,13 +126,7 @@ static NSString *PASSWORD = @"password";
                 NSLog(@"User exists in database");
             }
         }
-        
-//        NSLog(@"Name is %@", object[@"name"]);
-//        NSLog(@"Password is %@", object[@"password"]);
     }
-//    
-//    NSLog(@"%@", self.emails);
-//    NSLog(@"%@", self.passwords);
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
