@@ -8,6 +8,8 @@
 
 #import "StartUpViewController.h"
 #import <Parse/Parse.h>
+#import "User.h"
+#import "QueuesViewController.h"
 @interface StartUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
@@ -18,8 +20,7 @@
 
 @property (strong, nonatomic) NSArray *userData;
 
-@property (strong, nonatomic) NSMutableArray *emails;
-@property (strong, nonatomic) NSMutableArray *passwords;
+@property (strong, nonatomic) User *user;
 
 
 @end
@@ -27,30 +28,6 @@
 @implementation StartUpViewController
 {
     BOOL loginCredentialsAlreadyExist;
-}
-
-- (NSArray *) responseData
-{
-    if (!_responseData){
-        _responseData = [[NSArray alloc] init];
-    }
-    return _responseData;
-}
-
-- (NSMutableArray *)emails
-{
-    if (!_emails) {
-        _emails = [[NSMutableArray alloc] init];
-    }
-    return _emails;
-}
-
-- (NSMutableArray *)passwords
-{
-    if (!_passwords) {
-        _passwords = [[NSMutableArray alloc] init];
-    }
-    return _passwords;
 }
 
 - (void) setScrollView:(UIScrollView *)scrollView
@@ -103,14 +80,6 @@
 }
 
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    if ([[segue identifier] isEqualToString:@"UserAccountExists"]) {
-        NSLog(@"Going to Tables page");
-    }
-}
-
 - (void) checkLoginCredentials
 {
 
@@ -129,6 +98,18 @@
     }
 }
 
+#pragma mark Segue Options
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"UserAccountExists"]) {
+        QueuesViewController *qVC = segue.destinationViewController;
+        qVC.currentUser = [self user];
+        NSLog(@"Going to Tables page");
+    }
+}
+
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([identifier isEqualToString:@"UserAccountExists"]) {
@@ -141,6 +122,8 @@
     }
     return NO;
 }
+
+#pragma mark TextField Delegate Methods
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -203,6 +186,8 @@
 {
     [self.passwordEntryField resignFirstResponder];
 }
+
+#pragma mark ViewController Lifecycle Methods
 
 - (void)viewDidLoad
 {
