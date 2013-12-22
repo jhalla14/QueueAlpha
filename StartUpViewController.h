@@ -10,8 +10,5 @@
 
 @interface StartUpViewController : UIViewController<UITextFieldDelegate>
 
-@property (strong, nonatomic) NSArray *responseData;
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *password;
 
 @end

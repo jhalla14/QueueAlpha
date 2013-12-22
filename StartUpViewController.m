@@ -36,6 +36,14 @@
     self.scrollView.contentSize = CGSizeZero;
 }
 
+- (User *) user
+{
+    if (!_user) {
+        _user = [[User alloc] init];
+    }
+    return _user;
+}
+
 
 - (NSArray *) userData
 {
@@ -87,10 +95,21 @@
     for (PFObject *object in _userData){
         
         NSString *email = object[@"email"];
+        NSString *firstName = object[@"firstName"];
+        NSString *lastName = object[@"lastName"];
         NSString *password = object[@"password"];
+        int isAdmin = (int)object[@"admin"];
 
         if ([email isEqualToString:self.emailEntryField.text]) {
             if ([password isEqualToString:self.passwordEntryField.text]) {
+                self.user.email = email;
+                self.user.firstName = firstName;
+                self.user.lastName = lastName;
+                self.user.password = password;
+                if (isAdmin == 1) {
+                    self.user.admin = YES;
+                }
+
                 loginCredentialsAlreadyExist = YES;
                 NSLog(@"User exists in database");
             }
@@ -104,9 +123,11 @@
 {
     
     if ([[segue identifier] isEqualToString:@"UserAccountExists"]) {
-        QueuesViewController *qVC = segue.destinationViewController;
-        qVC.currentUser = [self user];
-        NSLog(@"Going to Tables page");
+        NSLog(@"Going to Queues View page");
+        if ([segue.destinationViewController isKindOfClass:[QueuesViewController class]]) {
+            QueuesViewController *queuesViewController = (QueuesViewController *) segue.destinationViewController;
+            queuesViewController.currentUser = [self user];
+        }
     }
 }
 

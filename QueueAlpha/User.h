@@ -14,6 +14,6 @@
 @property (strong, nonatomic) NSString *firstName;
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *password;
-@property (nonatomic, getter = isAdmin) BOOL *admin;
+@property (nonatomic, getter = isAdmin) BOOL admin;
 
 @end

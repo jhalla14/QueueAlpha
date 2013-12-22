@@ -22,6 +22,12 @@
 
 @implementation SignUpViewController
 
+- (void) setScrollView:(UIScrollView *)scrollView
+{
+    _scrollView = scrollView;
+    self.scrollView.contentSize = CGSizeZero;
+}
+
 - (IBAction)createButton:(UIButton *)sender
 {
     [self postNewUserToDatabase];

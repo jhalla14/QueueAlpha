@@ -95,8 +95,12 @@
     [super viewDidLoad];
 
 	// Do any additional setup after loading the view.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.navigationItem.rightBarButtonItem setAction:@selector(editAdminOptions:)];
+    NSLog(@"Current user is %hhd", _currentUser.admin);
+    if (_currentUser.admin) {
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        [self.navigationItem.rightBarButtonItem setAction:@selector(editAdminOptions:)];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
