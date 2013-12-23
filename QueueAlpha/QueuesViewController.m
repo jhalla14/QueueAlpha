@@ -19,19 +19,19 @@
 
 - (void) scrollingCellDidBeginPulling:(ScrollingCell *) cell
 {
-    NSLog(@"began pulling");
+//    NSLog(@"began pulling");
     [self.scrollView setScrollEnabled:NO];
 }
 
 - (void) scrollingCell:(ScrollingCell *)cell didChangePullOffset:(CGFloat)offset
 {
    [self.scrollView setContentOffset:CGPointMake(offset, 0)];
-    NSLog(@"pull offset");
+//    NSLog(@"pull offset");
 }
 
 - (void) scrollingCellDidEndPulling:(ScrollingCell *)cell
 {
-     NSLog(@"ended pulling");
+//     NSLog(@"ended pulling");
     [self.scrollView setScrollEnabled:YES];
    
 }

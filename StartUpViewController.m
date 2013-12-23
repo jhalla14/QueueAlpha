@@ -92,13 +92,14 @@
 {
 
     NSLog(@"%@",_userData);
-    for (PFObject *object in _userData){
+    for (PFObject *user in _userData){
         
-        NSString *email = object[@"email"];
-        NSString *firstName = object[@"firstName"];
-        NSString *lastName = object[@"lastName"];
-        NSString *password = object[@"password"];
-        int isAdmin = (int)object[@"admin"];
+        NSString *email = user[@"email"];
+        NSString *firstName = user[@"firstName"];
+        NSString *lastName = user[@"lastName"];
+        NSString *password = user[@"password"];
+        int isAdmin = (int)user[@"admin"];
+        NSLog(@"Admin boolean is %d", isAdmin);
 
         if ([email isEqualToString:self.emailEntryField.text]) {
             if ([password isEqualToString:self.passwordEntryField.text]) {
@@ -106,7 +107,9 @@
                 self.user.firstName = firstName;
                 self.user.lastName = lastName;
                 self.user.password = password;
-                if (isAdmin == 1) {
+                
+                if (isAdmin == 40616784) {
+                    NSLog(@"Email of admin is %@",self.emailEntryField.text);
                     self.user.admin = YES;
                 }
 

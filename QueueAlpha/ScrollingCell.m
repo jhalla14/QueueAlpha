@@ -67,7 +67,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
-    NSLog(@"Init with Coder");
+//    NSLog(@"Init with Coder");
 //    self = [super initWithFrame:frame];
     if (self = [super initWithCoder:aDecoder]) {
         // Initialization code
