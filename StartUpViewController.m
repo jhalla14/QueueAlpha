@@ -116,6 +116,11 @@
             }
         }
     }
+    
+    if (self.user.admin == NO) {
+        UIAlertView *deniedAlert = [[UIAlertView alloc] initWithTitle: @"Try again" message:@"Incorrect email / password combination" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [deniedAlert show];
+    }
 }
 
 #pragma mark Segue Options
@@ -135,6 +140,13 @@
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([identifier isEqualToString:@"UserAccountExists"]) {
+        if (self.user.isAdmin) {
+            //create UIAlertView
+            UIAlertView *alert = [[[UIAlertView alloc] init]initWithTitle:@"Admin Rights Detected" message:@"Would you like to edit table options?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:nil];
+            
+            [alert addButtonWithTitle:@"YES"];
+            [alert show];
+        }
         if (loginCredentialsAlreadyExist) {
             return YES;
         }
