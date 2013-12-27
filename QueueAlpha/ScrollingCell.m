@@ -77,8 +77,6 @@
         _scrollView.pagingEnabled = YES;
         _scrollView.showsHorizontalScrollIndicator = NO;
 
-//        NSLog(@"%@", _scrollView);
-        
         [self.contentView addSubview:_scrollView];
         [_scrollView addSubview:_colorView];
         

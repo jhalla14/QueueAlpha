@@ -9,6 +9,7 @@
 #import "QueuesViewController.h"
 
 @interface QueuesViewController () <ScrollingCellDelegate>
+-(UIColor *) randomColor;
 
 
 @end
@@ -51,16 +52,23 @@
 //    NSLog(@"creating scrolling cells");
     ScrollingCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    CGFloat red = (CGFloat)arc4random() / (CGFloat)RAND_MAX;;
-    CGFloat green = (CGFloat)arc4random() / (CGFloat)RAND_MAX;;
-    CGFloat blue = (CGFloat)arc4random() / (CGFloat)RAND_MAX;;
+//    CGFloat red = (CGFloat)arc4random() / (CGFloat)RAND_MAX;
+//    CGFloat green = (CGFloat)arc4random() / (CGFloat)RAND_MAX;
+//    CGFloat blue = (CGFloat)arc4random() / (CGFloat)RAND_MAX;
 
-    [cell setBackgroundColor:[UIColor colorWithRed:red green:green blue:blue alpha:1.0f]];
+    [cell setBackgroundColor:[self randomColor]];
     cell.delegate = self;
     NSLog(@"%ld", (long)indexPath.item);
     cell.tableLabel.text = [NSString stringWithFormat:@"Table %ld",(long)indexPath.item];
 
     return cell;
+}
+
+-(UIColor *) randomColor {
+    CGFloat red =  (CGFloat)arc4random() / (CGFloat)RAND_MAX;
+    CGFloat blue = (CGFloat)arc4random() / (CGFloat)RAND_MAX;
+    CGFloat green = (CGFloat)arc4random() / (CGFloat)RAND_MAX;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
 }
 
 - (void) editAdminOptions:(id)sender

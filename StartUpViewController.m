@@ -99,8 +99,7 @@
         NSString *lastName = user[@"lastName"];
         NSString *password = user[@"password"];
         int isAdmin = (int)user[@"admin"];
-        NSLog(@"Admin boolean is %d", isAdmin);
-
+        
         if ([email isEqualToString:self.emailEntryField.text]) {
             if ([password isEqualToString:self.passwordEntryField.text]) {
                 self.user.email = email;
@@ -109,7 +108,6 @@
                 self.user.password = password;
                 
                 if (isAdmin == 40616784) {
-                    NSLog(@"Email of admin is %@",self.emailEntryField.text);
                     self.user.admin = YES;
                 }
 
