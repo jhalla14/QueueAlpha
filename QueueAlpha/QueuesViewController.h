@@ -11,10 +11,9 @@
 #import "SpringyFlowLayout.h"
 #import "User.h"
 
-@interface QueuesViewController : UIViewController<UICollectionViewDataSource>
+@interface QueuesViewController : UIViewController<UITableViewDataSource>
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (retain, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (retain, nonatomic) IBOutlet SpringyFlowLayout *flowLayout;
+
 @property (strong, nonatomic) User *currentUser;
 
 @end

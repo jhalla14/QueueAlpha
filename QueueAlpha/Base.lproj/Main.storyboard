@@ -75,7 +75,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButton:" destination="bdT-Pr-qZ0" eventType="touchUpInside" id="1e7-RQ-lwC"/>
-                                            <segue destination="MW3-aN-QS3" kind="push" identifier="UserAccountExists" id="ZTw-bN-CWL"/>
+                                            <segue destination="Qwb-6m-gUr" kind="push" identifier="UserAccountExists" id="KUb-op-5nc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -153,27 +153,34 @@
             </objects>
             <point key="canvasLocation" x="2562" y="-110"/>
         </scene>
-        <!--Queues View Controller - Tables-->
-        <scene sceneID="rQX-fm-FCr">
+        <!--Table View Controller-->
+        <scene sceneID="UN6-Qu-HyU">
             <objects>
-                <viewController id="MW3-aN-QS3" customClass="QueuesViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="by8-eH-QRO"/>
-                        <viewControllerLayoutGuide type="bottom" id="pe5-H3-c7Y"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Vwz-8Q-7f7" customClass="UIScrollView">
+                <tableViewController id="Qwb-6m-gUr" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2hP-YM-0a3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Tables" id="wxJ-qa-U3K"/>
-                    <connections>
-                        <outlet property="scrollView" destination="Vwz-8Q-7f7" id="0Hd-yO-e1u"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ul1-lu-YEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8VN-pL-x7a">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8VN-pL-x7a" id="6ba-4Q-XO5">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qwb-6m-gUr" id="IHF-cF-icD"/>
+                            <outlet property="delegate" destination="Qwb-6m-gUr" id="8EO-xw-Rey"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Ffy-L4-7EI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcM-2Z-w2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2118" y="-110"/>
+            <point key="canvasLocation" x="2048" y="-110"/>
         </scene>
         <!--Sign Up View Controller - Sign Up-->
         <scene sceneID="5iR-JH-1uC">
@@ -259,7 +266,6 @@
                                         </state>
                                         <connections>
                                             <action selector="createButton:" destination="ALr-Kt-FU6" eventType="touchUpInside" id="Ob5-vv-GOp"/>
-                                            <segue destination="MW3-aN-QS3" kind="push" id="Ior-43-gZ7"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to Queue!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="203" translatesAutoresizingMaskIntoConstraints="NO" id="0Z4-zN-ItH">
@@ -325,7 +331,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="ZTw-bN-CWL"/>
-    </inferredMetricsTieBreakers>
 </document>
