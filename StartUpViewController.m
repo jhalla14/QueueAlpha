@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "User.h"
 #import "QueuesViewController.h"
+#import "QueuesTableViewController.h"
+#import "AdminViewController.h"
 @interface StartUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailEntryField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordEntryField;
@@ -21,6 +23,7 @@
 @property (strong, nonatomic) NSArray *userData;
 
 @property (strong, nonatomic) User *user;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 
 @end
@@ -55,29 +58,25 @@
 
 - (IBAction)loginButton:(UIButton *)sender
 {
-    
+//    
+    [self.emailEntryField resignFirstResponder];
     [self checkLoginCredentials];
     
-    [self.emailEntryField resignFirstResponder];
-    
-  
+
+//    UIStoryboardSegue *segue = [[UIStoryboardSegue alloc] initWithIdentifier:@"EditAdminOptions" source:self destination:adminVC];
+//    [segue perform];
+
+
 }
 - (void) startDownloadingUsers
 {
-    
-    
+
     PFQuery *query = [PFQuery queryWithClassName:@"UserInformation"];
     [query whereKey:@"name" notEqualTo:@""];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-//            for (PFObject *object in objects) {
-//                NSLog(@"%@", object.objectId);
-//                NSLog(@"%@", object[@"name"]);
-//            }
-            
             [self performSelectorOnMainThread:@selector(setUserData:) withObject:objects waitUntilDone:NO];
         } else {
             // Log details of the failure
@@ -117,10 +116,20 @@
         }
     }
     
-    if (self.user.admin == NO) {
-        UIAlertView *deniedAlert = [[UIAlertView alloc] initWithTitle: @"Try again" message:@"Incorrect email / password combination" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+    if (loginCredentialsAlreadyExist == NO) {
+        UIAlertView *deniedAlert = [[UIAlertView alloc] initWithTitle: @"Try again" message:@"Incorrect email / password combination" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [deniedAlert show];
     }
+    
+    if (self.user.isAdmin) {
+        //create UIAlertView
+        UIAlertView *alert = [[[UIAlertView alloc] init]initWithTitle:@"Admin Rights Detected" message:@"Would you like to edit table options?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:nil];
+        
+        [alert addButtonWithTitle:@"YES"];
+        [alert setTag:1];
+        [alert show];
+    }
+
 }
 
 #pragma mark Segue Options
@@ -130,31 +139,44 @@
     
     if ([[segue identifier] isEqualToString:@"UserAccountExists"]) {
         NSLog(@"Going to Queues View page");
-        if ([segue.destinationViewController isKindOfClass:[QueuesViewController class]]) {
-            QueuesViewController *queuesViewController = (QueuesViewController *) segue.destinationViewController;
-            queuesViewController.currentUser = [self user];
-        }
+
+//        if ([segue.destinationViewController isKindOfClass:[QueuesViewController class]]) {
+//            QueuesViewController *queuesViewController = (QueuesViewController *) segue.destinationViewController;
+//            queuesViewController.currentUser = [self user];
+//        }
     }
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     if ([identifier isEqualToString:@"UserAccountExists"]) {
-        if (self.user.isAdmin) {
-            //create UIAlertView
-            UIAlertView *alert = [[[UIAlertView alloc] init]initWithTitle:@"Admin Rights Detected" message:@"Would you like to edit table options?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:nil];
-            
-            [alert addButtonWithTitle:@"YES"];
-            [alert show];
-        }
         if (loginCredentialsAlreadyExist) {
             return YES;
         }
-        
+    
     } else if ([identifier isEqualToString:@"SignUp"]){
         return YES;
+    } else if ([identifier isEqualToString:@"EditAdminOptions"]){
+        if (self.user.isAdmin) {
+            return YES;
+        }
     }
     return NO;
+}
+
+#pragma mark UIAlertView Delegate Methods
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Alert view clicked %d", buttonIndex);
+    
+    //load the admin editing page
+    if (alertView.tag == 1 &&buttonIndex == 1) {
+        NSLog(@"ADMIN RIGHTS DETECTED");
+        AdminViewController *adminVC = [[AdminViewController alloc] init];
+        [self.navigationController pushViewController:adminVC animated:YES];
+    }
+    
 }
 
 #pragma mark TextField Delegate Methods

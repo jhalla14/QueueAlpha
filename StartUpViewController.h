@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StartUpViewController : UIViewController<UITextFieldDelegate>
+@interface StartUpViewController : UIViewController<UITextFieldDelegate, UIAlertViewDelegate>
 
 
 @end

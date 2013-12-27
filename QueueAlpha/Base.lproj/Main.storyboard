@@ -75,7 +75,6 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButton:" destination="bdT-Pr-qZ0" eventType="touchUpInside" id="1e7-RQ-lwC"/>
-                                            <segue destination="Qwb-6m-gUr" kind="push" identifier="UserAccountExists" id="KUb-op-5nc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -108,6 +107,7 @@
                     <navigationItem key="navigationItem" title="Queue" id="lQV-F7-hor"/>
                     <connections>
                         <outlet property="emailEntryField" destination="jad-D8-Izb" id="rMX-QT-ARb"/>
+                        <outlet property="loginButton" destination="3Rx-NT-aX2" id="b8z-WV-FYn"/>
                         <outlet property="passwordEntryField" destination="ASx-PO-j4y" id="fNS-o5-Z13"/>
                         <outlet property="scrollView" destination="fO4-uL-bZL" id="RZH-Oc-cFT"/>
                     </connections>
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsR-c5-qKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2562" y="-110"/>
+            <point key="canvasLocation" x="2110" y="-270"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="UN6-Qu-HyU">
@@ -163,7 +163,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8VN-pL-x7a">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8VN-pL-x7a" id="6ba-4Q-XO5">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -180,7 +180,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcM-2Z-w2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2048" y="-110"/>
+            <point key="canvasLocation" x="2110" y="408"/>
         </scene>
         <!--Sign Up View Controller - Sign Up-->
         <scene sceneID="5iR-JH-1uC">
