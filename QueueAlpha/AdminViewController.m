@@ -33,30 +33,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIView *mainView = self.view;
+    
+    [mainView setBackgroundColor:[UIColor grayColor]];
     
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 100, 100)];
     label.text = @"Hello";
-    label.textColor = [UIColor blackColor];
-    label.translatesAutoresizingMaskIntoConstraints = YES;
+    label.textColor = [UIColor whiteColor];
+    
     [label sizeToFit];
-    [self.view addSubview:label];
-    
-    UITextField *numberOfTables = [[UITextField alloc] initWithFrame:CGRectMake(0, 200, 100, 100)];
-    numberOfTables.translatesAutoresizingMaskIntoConstraints = YES;
     
     
-    [self.view addSubview:numberOfTables];
-    [self.view setNeedsDisplay];
     
-	// Do any additional setup after loading the view.
-}
+    
+    CGRect frame = CGRectMake(mainView.bounds.origin.x+20, mainView.bounds.origin.y+150, 0, 0);
+    
+    UITextField *numberOfTablesTextField = [[UITextField alloc] initWithFrame:frame];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    numberOfTablesTextField.borderStyle = UITextBorderStyleRoundedRect;
+    numberOfTablesTextField.placeholder = @"Number of allowed tables running";
+    numberOfTablesTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [numberOfTablesTextField sizeToFit];
+    
+    [mainView addSubview:label];
+    [mainView addSubview:numberOfTablesTextField];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    numberOfTablesTextField.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *vs = NSDictionaryOfVariableBindings(label, numberOfTablesTextField);
+    
+    [mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[label]|" options:0 metrics:nil views:vs]];
+    [mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[numberOfTablesTextField]-20-|" options:0 metrics:nil views:vs]];
+    [mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-75-[label]-20-[numberOfTablesTextField]" options:0 metrics:nil views:vs]];
+
 }
 
 @end
