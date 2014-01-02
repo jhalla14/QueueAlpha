@@ -89,7 +89,7 @@
         NSString *firstName = user[@"firstName"];
         NSString *lastName = user[@"lastName"];
         NSString *password = user[@"password"];
-        BOOL isAdmin = (BOOL)user[@"admin"];
+        BOOL isAdmin = [user[@"admin"] boolValue];
 //        int isAdmin = (int)user[@"admin"];
         NSLog(@"isAdmin variable %hhd", isAdmin);
         

@@ -36,13 +36,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 100, 100)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 100, 100)];
     label.text = @"Hello";
-    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.textColor = [UIColor blackColor];
+    label.translatesAutoresizingMaskIntoConstraints = YES;
+    [label sizeToFit];
     [self.view addSubview:label];
     
-    UITextField *numberOfTables = [[UITextField alloc] initWithFrame:CGRectMake(0, 500, 100, 100)];
-    numberOfTables.translatesAutoresizingMaskIntoConstraints = NO;
+    UITextField *numberOfTables = [[UITextField alloc] initWithFrame:CGRectMake(0, 200, 100, 100)];
+    numberOfTables.translatesAutoresizingMaskIntoConstraints = YES;
+    
     
     [self.view addSubview:numberOfTables];
     [self.view setNeedsDisplay];
