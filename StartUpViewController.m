@@ -47,7 +47,6 @@
     return _user;
 }
 
-
 - (NSArray *) userData
 {
     if (!_userData) {
@@ -58,15 +57,8 @@
 
 - (IBAction)loginButton:(UIButton *)sender
 {
-//    
     [self.emailEntryField resignFirstResponder];
     [self checkLoginCredentials];
-    
-
-//    UIStoryboardSegue *segue = [[UIStoryboardSegue alloc] initWithIdentifier:@"EditAdminOptions" source:self destination:adminVC];
-//    [segue perform];
-
-
 }
 - (void) startDownloadingUsers
 {
@@ -90,7 +82,7 @@
 - (void) checkLoginCredentials
 {
 
-    NSLog(@"%@",_userData);
+//   NSLog(@"%@",_userData);
     for (PFObject *user in _userData){
         
         NSString *email = user[@"email"];
@@ -98,6 +90,7 @@
         NSString *lastName = user[@"lastName"];
         NSString *password = user[@"password"];
         int isAdmin = (int)user[@"admin"];
+        NSLog(@"isAdmin variable %d", isAdmin);
         
         if ([email isEqualToString:self.emailEntryField.text]) {
             if ([password isEqualToString:self.passwordEntryField.text]) {
@@ -106,7 +99,7 @@
                 self.user.lastName = lastName;
                 self.user.password = password;
                 
-                if (isAdmin == 40616784) {
+                if (isAdmin == 40620880) {
                     self.user.admin = YES;
                 }
 
@@ -115,7 +108,6 @@
             }
         }
     }
-    
     if (loginCredentialsAlreadyExist == NO) {
         UIAlertView *deniedAlert = [[UIAlertView alloc] initWithTitle: @"Try again" message:@"Incorrect email / password combination" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [deniedAlert show];
@@ -156,11 +148,8 @@
     
     } else if ([identifier isEqualToString:@"SignUp"]){
         return YES;
-    } else if ([identifier isEqualToString:@"EditAdminOptions"]){
-        if (self.user.isAdmin) {
-            return YES;
-        }
     }
+    
     return NO;
 }
 

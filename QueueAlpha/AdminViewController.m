@@ -23,6 +23,13 @@
     return self;
 }
 
+- (void) loadView
+{
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor grayColor];
+    self.view = view;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

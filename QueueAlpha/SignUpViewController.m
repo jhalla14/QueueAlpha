@@ -129,6 +129,9 @@
 {
     [super viewDidLoad];
     [self registerForKeyboardNotifications];
+    
+    UIView *mainView = self.view;
+    _scrollView.contentSize = mainView.bounds.size;
 
 }
 
