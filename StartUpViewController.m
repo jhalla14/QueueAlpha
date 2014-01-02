@@ -89,8 +89,9 @@
         NSString *firstName = user[@"firstName"];
         NSString *lastName = user[@"lastName"];
         NSString *password = user[@"password"];
-        int isAdmin = (int)user[@"admin"];
-        NSLog(@"isAdmin variable %d", isAdmin);
+        BOOL isAdmin = (BOOL)user[@"admin"];
+//        int isAdmin = (int)user[@"admin"];
+        NSLog(@"isAdmin variable %hhd", isAdmin);
         
         if ([email isEqualToString:self.emailEntryField.text]) {
             if ([password isEqualToString:self.passwordEntryField.text]) {
@@ -99,7 +100,7 @@
                 self.user.lastName = lastName;
                 self.user.password = password;
                 
-                if (isAdmin == 40620880) {
+                if (isAdmin) {
                     self.user.admin = YES;
                 }
 
@@ -164,8 +165,11 @@
         NSLog(@"ADMIN RIGHTS DETECTED");
         AdminViewController *adminVC = [[AdminViewController alloc] init];
         [self.navigationController pushViewController:adminVC animated:YES];
+    } else if (buttonIndex == 0){
+        QueuesTableViewController *queuesTablesVC = [[QueuesTableViewController alloc] init];
+        [self.navigationController pushViewController:queuesTablesVC animated:YES];
     }
-    
+
 }
 
 #pragma mark TextField Delegate Methods

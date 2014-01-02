@@ -26,13 +26,27 @@
 - (void) loadView
 {
     UIView *view = [UIView new];
-    view.backgroundColor = [UIColor grayColor];
+    
     self.view = view;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 0, 100, 100)];
+    label.text = @"Hello";
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:label];
+    
+    UITextField *numberOfTables = [[UITextField alloc] initWithFrame:CGRectMake(0, 500, 100, 100)];
+    numberOfTables.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:numberOfTables];
+    [self.view setNeedsDisplay];
+    
 	// Do any additional setup after loading the view.
 }
 
