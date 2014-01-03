@@ -7,12 +7,32 @@
 //
 
 #import "QueuesTableViewController.h"
+#import <Parse/Parse.h>
 
 @interface QueuesTableViewController ()
+
+@property (nonatomic, strong) NSString *numberOfTableRunning;
 
 @end
 
 @implementation QueuesTableViewController
+
+
+- (void) downloadNumberOftablesRunning
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"AdminOptions"];
+    [query whereKey:@"numberOfTablesRunning" notEqualTo:@""];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d numbers.", objects.count);
+            [self performSelectorOnMainThread:@selector(setNumberOfTablesRunning:) withObject:objects waitUntilDone:NO];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,24 +54,22 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self downloadNumberOftablesRunning];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return self.numberOfTableRunning.intValue;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+    
     // Return the number of rows in the section.
     return 30;
 }

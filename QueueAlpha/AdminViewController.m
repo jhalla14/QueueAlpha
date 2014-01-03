@@ -62,6 +62,7 @@
 {
     [super viewDidLoad];
     UIView *mainView = self.view;
+    self.navigationItem.title = @"Admin Options";
 
     //sign up for Keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -73,12 +74,12 @@
     _saveButton = submit;
     
     UIScrollView *scrollView = [UIScrollView new];
-    scrollView.backgroundColor = [UIColor whiteColor];
+    scrollView.backgroundColor = [UIColor darkGrayColor];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     [mainView addSubview:scrollView];
 
     //set the background color
-    [mainView setBackgroundColor:[UIColor grayColor]];
+    [mainView setBackgroundColor:[UIColor darkGrayColor]];
     
     //tables running
     UILabel *tablesRunningLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 100, 100)];
