@@ -8,6 +8,7 @@
 
 #import "AdminViewController.h"
 #import <Parse/Parse.h>
+#import "QueuesTableViewController.h"
 
 @interface AdminViewController ()
 
@@ -41,6 +42,14 @@
 - (IBAction)saveButtonClicked:(id)sender
 {
     NSLog(@"Clicked");
+    [self uploadAdminOptions];
+    [self goToQueuesTableView];
+}
+
+- (void) goToQueuesTableView
+{
+    QueuesTableViewController *queuesVC = [QueuesTableViewController new];
+    [self.navigationController pushViewController:queuesVC animated:YES];
 }
 
 - (void) loadView
@@ -59,10 +68,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     
     //create Save Button in upper right corner
-    UIBarButtonItem *submit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(uploadAdminOptions)];
+    UIBarButtonItem *submit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonClicked:)];
     [self.navigationItem setRightBarButtonItem:submit];
-    [submit setTarget:self];
-    [submit setAction:@selector(saveButtonClicked:)];
     _saveButton = submit;
     
     UIScrollView *scrollView = [UIScrollView new];
