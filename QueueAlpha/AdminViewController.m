@@ -7,11 +7,14 @@
 //
 
 #import "AdminViewController.h"
+#import <Parse/Parse.h>
 
 @interface AdminViewController ()
 
 @property(nonatomic, weak) UIView *firstResponder;
-@property (strong, nonatomic) UIScrollView *scrollView;
+@property(nonatomic, weak) UIScrollView *scrollView;
+
+
 
 @end
 
@@ -22,20 +25,16 @@
     CGPoint _oldOffset;
 }
 
-@synthesize scrollView = _scrollView;
-
-- (UIScrollView *) scrollView
+- (void) uploadAdminOptions
 {
-    if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc]initWithFrame:self.view.bounds];
-    }
-    return _scrollView;
-}
+    
 
-- (void) setScrollView:(UIScrollView *)scrollView
-{
-    _scrollView = scrollView;
-//    self.scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height);
+    PFObject *adminOptions = [PFObject objectWithClassName:@"AdminOptions"];
+    
+    adminOptions[@"numberOfTablesRunning"] = nil;
+    adminOptions[@"maxQueueLength"] = nil;
+    
+    [adminOptions saveInBackground];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,12 +59,16 @@
     
     UIView *mainView = self.view;
     
+    
     //sign up for Keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     
-    
-    
+    UIScrollView *scrollView = [UIScrollView new];
+    scrollView.backgroundColor = [UIColor whiteColor];
+    scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    [mainView addSubview:scrollView];
+
     //set the background color
     [mainView setBackgroundColor:[UIColor grayColor]];
     
@@ -101,10 +104,10 @@
     [maxQueueTextField sizeToFit];
     
     //create subview hierarchy
-    [self.scrollView addSubview:tablesRunningLabel];
-    [self.scrollView addSubview:numberOfTablesTextField];
-    [self.scrollView addSubview:maxQueueLengthLabel];
-    [self.scrollView addSubview:maxQueueTextField];
+    [scrollView addSubview:tablesRunningLabel];
+    [scrollView addSubview:numberOfTablesTextField];
+    [scrollView addSubview:maxQueueLengthLabel];
+    [scrollView addSubview:maxQueueTextField];
     
     tablesRunningLabel.translatesAutoresizingMaskIntoConstraints = NO;
     numberOfTablesTextField.translatesAutoresizingMaskIntoConstraints = NO;
@@ -112,33 +115,32 @@
     maxQueueTextField.translatesAutoresizingMaskIntoConstraints = NO;
     
     //visual format dictionary for mapping variables to actual views
-    NSDictionary *vs = NSDictionaryOfVariableBindings(tablesRunningLabel, numberOfTablesTextField, maxQueueLengthLabel, maxQueueTextField);
+    NSDictionary *vs = NSDictionaryOfVariableBindings(tablesRunningLabel, numberOfTablesTextField, maxQueueLengthLabel, maxQueueTextField, scrollView);
     
     //Auto Layout Contraints
-    CGSize sz = self.scrollView.bounds.size;
-    sz.height = mainView.bounds.size.height;
-    self.scrollView.contentSize = sz; // This is the crucial line
+//    CGSize sz = self.scrollView.bounds.size;
+//    sz.height = mainView.bounds.size.height;
+    scrollView.contentSize = CGSizeMake(mainView.bounds.size.width+10, mainView.bounds.size.height+10); // This is the crucial line
+//
+    NSLog(@"%@", scrollView);
     
+    [mainView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|"
+                                             options:0 metrics:nil
+                                               views:vs]];
+    [mainView addConstraints:
+     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|"
+                                             options:0 metrics:nil
+                                               views:vs]];
     
-//    self.scrollView.contentSize = CGSizeMake(mainView.bounds.size.width, mainView.bounds.size.height);
-    [self.scrollView setBackgroundColor:[UIColor whiteColor]];
-    [self.scrollView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    NSLog(@"%@", self.scrollView);
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[numberOfTablesTextField]-20-|" options:0 metrics:nil views:vs]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-75-[tablesRunningLabel]-5-[numberOfTablesTextField]" options:0 metrics:nil views:vs]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tablesRunningLabel]-20-|" options:0 metrics:nil views:vs]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[maxQueueLengthLabel]-20-|" options:0 metrics:nil views:vs]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[maxQueueTextField]-20-|" options:0 metrics:nil views:vs]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[numberOfTablesTextField]-10-[maxQueueLengthLabel]-5-[maxQueueTextField]" options:0 metrics:nil views:vs]];
     
-    UIView* contentView = self.scrollView.subviews[0];
-    [mainView addSubview:self.scrollView];
-    
-    [self.scrollView addConstraint:
-     [NSLayoutConstraint constraintWithItem:contentView attribute:NSLayoutAttributeWidth relatedBy:0 toItem:self.scrollView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-    [self.scrollView addConstraint:
-     [NSLayoutConstraint constraintWithItem:contentView attribute:NSLayoutAttributeHeight relatedBy:0 toItem:self.scrollView attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
-    
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[numberOfTablesTextField]-20-|" options:0 metrics:nil views:vs]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-75-[tablesRunningLabel]-5-[numberOfTablesTextField]" options:0 metrics:nil views:vs]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[tablesRunningLabel]-20-|" options:0 metrics:nil views:vs]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[maxQueueLengthLabel]-20-|" options:0 metrics:nil views:vs]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[maxQueueTextField]-20-|" options:0 metrics:nil views:vs]];
-    [self.scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[numberOfTablesTextField]-10-[maxQueueLengthLabel]-5-[maxQueueTextField]" options:0 metrics:nil views:vs]];
+    _scrollView = scrollView;
     
 }
 
