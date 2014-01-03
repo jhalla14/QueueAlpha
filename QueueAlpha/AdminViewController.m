@@ -14,7 +14,8 @@
 @property(nonatomic, weak) UIView *firstResponder;
 @property(nonatomic, weak) UIScrollView *scrollView;
 
-
+@property(nonatomic, weak) UITextField *numberOfTablesRunning;
+@property(nonatomic, weak) UITextField *maxQueueLength;
 
 @end
 
@@ -27,8 +28,6 @@
 
 - (void) uploadAdminOptions
 {
-    
-
     PFObject *adminOptions = [PFObject objectWithClassName:@"AdminOptions"];
     
     adminOptions[@"numberOfTablesRunning"] = nil;
@@ -37,32 +36,23 @@
     [adminOptions saveInBackground];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void) loadView
 {
     UIView *view = [UIView new];
-    
     self.view = view;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     UIView *mainView = self.view;
-    
-    
+
     //sign up for Keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    UIBarButtonItem *submit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(uploadAdminOptions)];
+    [self.navigationItem setRightBarButtonItem:submit];
     
     UIScrollView *scrollView = [UIScrollView new];
     scrollView.backgroundColor = [UIColor whiteColor];
@@ -118,20 +108,13 @@
     NSDictionary *vs = NSDictionaryOfVariableBindings(tablesRunningLabel, numberOfTablesTextField, maxQueueLengthLabel, maxQueueTextField, scrollView);
     
     //Auto Layout Contraints
-//    CGSize sz = self.scrollView.bounds.size;
-//    sz.height = mainView.bounds.size.height;
     scrollView.contentSize = CGSizeMake(mainView.bounds.size.width+10, mainView.bounds.size.height+10); // This is the crucial line
-//
     NSLog(@"%@", scrollView);
     
     [mainView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|"
-                                             options:0 metrics:nil
-                                               views:vs]];
+    [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:vs]];
     [mainView addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|"
-                                             options:0 metrics:nil
-                                               views:vs]];
+    [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView]|" options:0 metrics:nil views:vs]];
     
     [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[numberOfTablesTextField]-20-|" options:0 metrics:nil views:vs]];
     [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-75-[tablesRunningLabel]-5-[numberOfTablesTextField]" options:0 metrics:nil views:vs]];
