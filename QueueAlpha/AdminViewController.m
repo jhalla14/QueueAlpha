@@ -28,10 +28,12 @@
 
 - (void) uploadAdminOptions
 {
+    NSLog(@"%@", _numberOfTablesRunning.text);
+
     PFObject *adminOptions = [PFObject objectWithClassName:@"AdminOptions"];
     
-    adminOptions[@"numberOfTablesRunning"] = nil;
-    adminOptions[@"maxQueueLength"] = nil;
+    adminOptions[@"numberOfTablesRunning"] = _numberOfTablesRunning.text;
+    adminOptions[@"maxQueueLength"] = _maxQueueLength.text;
     
     [adminOptions saveInBackground];
 }
@@ -124,6 +126,8 @@
     [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[numberOfTablesTextField]-10-[maxQueueLengthLabel]-5-[maxQueueTextField]" options:0 metrics:nil views:vs]];
     
     _scrollView = scrollView;
+    _numberOfTablesRunning = numberOfTablesTextField;
+    _maxQueueLength = maxQueueTextField;
     
 }
 
