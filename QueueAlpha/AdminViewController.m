@@ -17,6 +17,8 @@
 @property(nonatomic, weak) UITextField *numberOfTablesRunning;
 @property(nonatomic, weak) UITextField *maxQueueLength;
 
+@property(nonatomic, weak) UIBarButtonItem *saveButton;
+
 @end
 
 @implementation AdminViewController
@@ -28,14 +30,17 @@
 
 - (void) uploadAdminOptions
 {
-    NSLog(@"%@", _numberOfTablesRunning.text);
-
     PFObject *adminOptions = [PFObject objectWithClassName:@"AdminOptions"];
     
     adminOptions[@"numberOfTablesRunning"] = _numberOfTablesRunning.text;
     adminOptions[@"maxQueueLength"] = _maxQueueLength.text;
     
     [adminOptions saveInBackground];
+}
+
+- (IBAction)saveButtonClicked:(id)sender
+{
+    NSLog(@"Clicked");
 }
 
 - (void) loadView
@@ -53,8 +58,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    //create Save Button in upper right corner
     UIBarButtonItem *submit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(uploadAdminOptions)];
     [self.navigationItem setRightBarButtonItem:submit];
+    [submit setTarget:self];
+    [submit setAction:@selector(saveButtonClicked:)];
+    _saveButton = submit;
     
     UIScrollView *scrollView = [UIScrollView new];
     scrollView.backgroundColor = [UIColor whiteColor];
