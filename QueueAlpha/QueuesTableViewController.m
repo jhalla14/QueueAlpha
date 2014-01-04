@@ -90,10 +90,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.textLabel.textColor = [UIColor redColor];
+        NSLog(@"Creating a cell %@",  cell);
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"Hello world! %d", indexPath.row];
-    
+    NSLog(@"Created cells");
     return cell;
 }
 
