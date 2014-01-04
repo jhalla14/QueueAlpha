@@ -89,15 +89,21 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    //reused cell will never be nil when dequeuReusableCellWithIdentifier: forIndexPath: <-- (this) is called
     if (cell == nil) {
+        //initWithStyle doesn't work unless subclasses for other styles besides UITableviewCellSyleDefault
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.textLabel.textColor = [UIColor redColor];
         NSLog(@"Creating a cell %@",  cell);
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"Hello world! %d", indexPath.row];
-    NSLog(@"Created cells");
     return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
 }
 
 /*
