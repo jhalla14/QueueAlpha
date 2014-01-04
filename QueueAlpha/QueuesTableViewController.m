@@ -11,11 +11,17 @@
 
 @interface QueuesTableViewController ()
 
-@property (nonatomic, strong) NSString *numberOfTableRunning;
+@property (nonatomic, strong) NSString *numberOfTablesRunning;
 
 @end
 
 @implementation QueuesTableViewController
+
+- (void) setNumberOfTablesRunning:(NSString *)numberOfTablesRunning
+{
+    NSLog(@"Setting number of Tables Running");
+    _numberOfTablesRunning = numberOfTablesRunning;
+}
 
 
 - (void) downloadNumberOftablesRunning
@@ -56,7 +62,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self downloadNumberOftablesRunning];
+//    [self downloadNumberOftablesRunning]; //needs to be reconfigured using the Model
 }
 
 #pragma mark - Table view data source
@@ -64,7 +70,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return self.numberOfTableRunning.intValue;
+    //self.numberOfTablesRunning.intValue
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -80,6 +87,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.textLabel.textColor = [UIColor redColor];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"Hello world! %d", indexPath.row];
     
     return cell;
 }
