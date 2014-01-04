@@ -60,6 +60,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    self.navigationItem.title = @"Available Tables";
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -97,7 +98,11 @@
         NSLog(@"Creating a cell %@",  cell);
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Hello world! %d", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Table: %d", indexPath.row];
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    cell.backgroundColor = [UIColor darkGrayColor];
     return cell;
 }
 
