@@ -12,6 +12,7 @@
 @interface QueuesTableViewController ()
 
 @property (nonatomic, strong) NSString *numberOfTablesRunning;
+@property (nonatomic, strong) NSArray *tablesData;
 
 @end
 
@@ -28,11 +29,13 @@
 {
     PFQuery *query = [PFQuery queryWithClassName:@"AdminOptions"];
     [query whereKey:@"numberOfTablesRunning" notEqualTo:@""];
+    [query orderByAscending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d numbers.", objects.count);
-            [self performSelectorOnMainThread:@selector(setNumberOfTablesRunning:) withObject:objects waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(setTablesData:) withObject:objects waitUntilDone:NO];
+            
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
@@ -65,7 +68,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-//    [self downloadNumberOftablesRunning]; //needs to be reconfigured using the Model
+    [self downloadNumberOftablesRunning]; //needs to be reconfigured using the Model
+    
 }
 
 #pragma mark - Table view data source
@@ -98,6 +102,7 @@
         NSLog(@"Creating a cell %@",  cell);
     }
     
+    NSLog(@"data is %@", self.tablesData);
     cell.textLabel.text = [NSString stringWithFormat:@"Table: %d", indexPath.row];
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.textColor = [UIColor whiteColor];
