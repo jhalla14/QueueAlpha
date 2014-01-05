@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F003154D1879A7D900762FEB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F003154C1879A7D900762FEB /* FacebookSDK.framework */; };
 		F009DC58185A53750094154D /* ScrollingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F009DC57185A53750094154D /* ScrollingCell.m */; };
+		F0276B0D1866293B00CDCBD8 /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0276B0C1866293B00CDCBD8 /* AdminViewController.m */; };
+		F0276B10186791A100CDCBD8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F0276B0F186791A100CDCBD8 /* User.m */; };
 		F09179F61847DD1D00AF308F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F51847DD1D00AF308F /* Foundation.framework */; };
 		F09179F81847DD1D00AF308F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F71847DD1D00AF308F /* CoreGraphics.framework */; };
 		F09179FA1847DD1D00AF308F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F09179F91847DD1D00AF308F /* UIKit.framework */; };
@@ -26,9 +29,18 @@
 		F0917A351849512200AF308F /* Team.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A341849512200AF308F /* Team.m */; };
 		F0917A38184BE9C300AF308F /* QueueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A37184BE9C300AF308F /* QueueModel.m */; };
 		F0917A3E184E5A1900AF308F /* StartUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A3D184E5A1900AF308F /* StartUpViewController.m */; };
-		F0917A441850F99C00AF308F /* QueuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A431850F99C00AF308F /* QueuesViewController.m */; };
 		F0917A471850FA1400AF308F /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0917A461850FA1400AF308F /* SignUpViewController.m */; };
-		F09DD370185FC15300471717 /* SpringyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F09DD36F185FC15300471717 /* SpringyFlowLayout.m */; };
+		F0A65412186E133000C0EFB2 /* QueuesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A65411186E133000C0EFB2 /* QueuesTableViewController.m */; };
+		F0F728E918628F9200BF9754 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728E818628F9200BF9754 /* Parse.framework */; };
+		F0F728EB18628FFA00BF9754 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728EA18628FFA00BF9754 /* AudioToolbox.framework */; };
+		F0F728ED1862900100BF9754 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728EC1862900100BF9754 /* CFNetwork.framework */; };
+		F0F728EF1862900F00BF9754 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728EE1862900F00BF9754 /* CoreLocation.framework */; };
+		F0F728F11862901500BF9754 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728F01862901500BF9754 /* libz.1.1.3.dylib */; };
+		F0F728F31862901F00BF9754 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728F21862901F00BF9754 /* MobileCoreServices.framework */; };
+		F0F728F51862902600BF9754 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728F41862902600BF9754 /* QuartzCore.framework */; };
+		F0F728F71862902C00BF9754 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728F61862902C00BF9754 /* Security.framework */; };
+		F0F728F91862903100BF9754 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728F81862903100BF9754 /* StoreKit.framework */; };
+		F0F728FB1862903A00BF9754 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F728FA1862903A00BF9754 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +54,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F003154C1879A7D900762FEB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		F009DC56185A53750094154D /* ScrollingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingCell.h; sourceTree = "<group>"; };
 		F009DC57185A53750094154D /* ScrollingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingCell.m; sourceTree = "<group>"; };
+		F0276B0B1866293B00CDCBD8 /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		F0276B0C1866293B00CDCBD8 /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
+		F0276B0E186791A100CDCBD8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = QueueAlpha/User.h; sourceTree = "<group>"; };
+		F0276B0F186791A100CDCBD8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = QueueAlpha/User.m; sourceTree = "<group>"; };
 		F09179F21847DD1D00AF308F /* QueueAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QueueAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09179F51847DD1D00AF308F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F09179F71847DD1D00AF308F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,12 +88,20 @@
 		F0917A37184BE9C300AF308F /* QueueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueueModel.m; sourceTree = "<group>"; };
 		F0917A3C184E5A1900AF308F /* StartUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartUpViewController.h; path = ../StartUpViewController.h; sourceTree = "<group>"; };
 		F0917A3D184E5A1900AF308F /* StartUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartUpViewController.m; path = ../StartUpViewController.m; sourceTree = "<group>"; };
-		F0917A421850F99C00AF308F /* QueuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueuesViewController.h; sourceTree = "<group>"; };
-		F0917A431850F99C00AF308F /* QueuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueuesViewController.m; sourceTree = "<group>"; };
 		F0917A451850FA1400AF308F /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		F0917A461850FA1400AF308F /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		F09DD36E185FC15300471717 /* SpringyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringyFlowLayout.h; sourceTree = "<group>"; };
-		F09DD36F185FC15300471717 /* SpringyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringyFlowLayout.m; sourceTree = "<group>"; };
+		F0A65410186E133000C0EFB2 /* QueuesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueuesTableViewController.h; sourceTree = "<group>"; };
+		F0A65411186E133000C0EFB2 /* QueuesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueuesTableViewController.m; sourceTree = "<group>"; };
+		F0F728E818628F9200BF9754 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		F0F728EA18628FFA00BF9754 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F0F728EC1862900100BF9754 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F0F728EE1862900F00BF9754 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F0F728F01862901500BF9754 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		F0F728F21862901F00BF9754 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F0F728F41862902600BF9754 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F0F728F61862902C00BF9754 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F0F728F81862903100BF9754 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F0F728FA1862903A00BF9754 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +109,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F728FB1862903A00BF9754 /* SystemConfiguration.framework in Frameworks */,
+				F0F728F91862903100BF9754 /* StoreKit.framework in Frameworks */,
+				F0F728F71862902C00BF9754 /* Security.framework in Frameworks */,
+				F0F728F51862902600BF9754 /* QuartzCore.framework in Frameworks */,
+				F0F728F31862901F00BF9754 /* MobileCoreServices.framework in Frameworks */,
+				F0F728F11862901500BF9754 /* libz.1.1.3.dylib in Frameworks */,
+				F0F728EF1862900F00BF9754 /* CoreLocation.framework in Frameworks */,
 				F09179F81847DD1D00AF308F /* CoreGraphics.framework in Frameworks */,
+				F0F728ED1862900100BF9754 /* CFNetwork.framework in Frameworks */,
+				F0F728EB18628FFA00BF9754 /* AudioToolbox.framework in Frameworks */,
 				F09179FA1847DD1D00AF308F /* UIKit.framework in Frameworks */,
+				F0F728E918628F9200BF9754 /* Parse.framework in Frameworks */,
 				F09179F61847DD1D00AF308F /* Foundation.framework in Frameworks */,
+				F003154D1879A7D900762FEB /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +142,8 @@
 		F09179E91847DD1D00AF308F = {
 			isa = PBXGroup;
 			children = (
+				F0276B0E186791A100CDCBD8 /* User.h */,
+				F0276B0F186791A100CDCBD8 /* User.m */,
 				F0917A2D1847DEE000AF308F /* Player.h */,
 				F0917A36184BE9C300AF308F /* QueueModel.h */,
 				F0917A37184BE9C300AF308F /* QueueModel.m */,
@@ -133,6 +171,17 @@
 		F09179F41847DD1D00AF308F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F003154C1879A7D900762FEB /* FacebookSDK.framework */,
+				F0F728FA1862903A00BF9754 /* SystemConfiguration.framework */,
+				F0F728F81862903100BF9754 /* StoreKit.framework */,
+				F0F728F61862902C00BF9754 /* Security.framework */,
+				F0F728F41862902600BF9754 /* QuartzCore.framework */,
+				F0F728F21862901F00BF9754 /* MobileCoreServices.framework */,
+				F0F728F01862901500BF9754 /* libz.1.1.3.dylib */,
+				F0F728EE1862900F00BF9754 /* CoreLocation.framework */,
+				F0F728EC1862900100BF9754 /* CFNetwork.framework */,
+				F0F728EA18628FFA00BF9754 /* AudioToolbox.framework */,
+				F0F728E818628F9200BF9754 /* Parse.framework */,
 				F09179F51847DD1D00AF308F /* Foundation.framework */,
 				F09179F71847DD1D00AF308F /* CoreGraphics.framework */,
 				F09179F91847DD1D00AF308F /* UIKit.framework */,
@@ -147,16 +196,16 @@
 				F0917A3C184E5A1900AF308F /* StartUpViewController.h */,
 				F0917A3D184E5A1900AF308F /* StartUpViewController.m */,
 				F0917A071847DD1D00AF308F /* Main.storyboard */,
+				F0A65410186E133000C0EFB2 /* QueuesTableViewController.h */,
+				F0A65411186E133000C0EFB2 /* QueuesTableViewController.m */,
+				F0276B0B1866293B00CDCBD8 /* AdminViewController.h */,
+				F0276B0C1866293B00CDCBD8 /* AdminViewController.m */,
 				F009DC56185A53750094154D /* ScrollingCell.h */,
 				F009DC57185A53750094154D /* ScrollingCell.m */,
 				F0917A451850FA1400AF308F /* SignUpViewController.h */,
 				F0917A461850FA1400AF308F /* SignUpViewController.m */,
-				F0917A421850F99C00AF308F /* QueuesViewController.h */,
-				F0917A431850F99C00AF308F /* QueuesViewController.m */,
 				F0917A101847DD1D00AF308F /* Images.xcassets */,
 				F09179FC1847DD1D00AF308F /* Supporting Files */,
-				F09DD36E185FC15300471717 /* SpringyFlowLayout.h */,
-				F09DD36F185FC15300471717 /* SpringyFlowLayout.m */,
 			);
 			path = QueueAlpha;
 			sourceTree = "<group>";
@@ -289,15 +338,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0276B10186791A100CDCBD8 /* User.m in Sources */,
+				F0276B0D1866293B00CDCBD8 /* AdminViewController.m in Sources */,
 				F0917A32184812C900AF308F /* Table.m in Sources */,
 				F0917A3E184E5A1900AF308F /* StartUpViewController.m in Sources */,
 				F0917A061847DD1D00AF308F /* AppDelegate.m in Sources */,
 				F0917A021847DD1D00AF308F /* main.m in Sources */,
-				F0917A441850F99C00AF308F /* QueuesViewController.m in Sources */,
-				F09DD370185FC15300471717 /* SpringyFlowLayout.m in Sources */,
 				F0917A38184BE9C300AF308F /* QueueModel.m in Sources */,
 				F0917A351849512200AF308F /* Team.m in Sources */,
 				F0917A471850FA1400AF308F /* SignUpViewController.m in Sources */,
+				F0A65412186E133000C0EFB2 /* QueuesTableViewController.m in Sources */,
 				F0917A2F1847DEE000AF308F /* Player.m in Sources */,
 				F009DC58185A53750094154D /* ScrollingCell.m in Sources */,
 			);
@@ -426,6 +476,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Joshua\\ Hall/Developer/Queue/QueueAlpha",
+					"/Users/Joshua\\ Hall/Documents/FacebookSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QueueAlpha/QueueAlpha-Prefix.pch";
 				INFOPLIST_FILE = "QueueAlpha/QueueAlpha-Info.plist";
@@ -440,6 +495,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Joshua\\ Hall/Developer/Queue/QueueAlpha",
+					"/Users/Joshua\\ Hall/Documents/FacebookSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QueueAlpha/QueueAlpha-Prefix.pch";
 				INFOPLIST_FILE = "QueueAlpha/QueueAlpha-Info.plist";
