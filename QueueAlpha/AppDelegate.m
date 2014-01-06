@@ -23,6 +23,7 @@
     [Parse setApplicationId:@"U5LxVrGe6hwLygivQEDTmeLhS6IFkoklGppGynvt"
                   clientKey:@"OMxbxpLzmdqTZ2Tc6pf4pvnpfjd9zNsJBAYZWtRC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [FBLoginView class];
     
     return YES;
 }
