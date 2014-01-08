@@ -214,6 +214,13 @@
     // Do any additional setup after loading the view.
     [super viewDidLoad];
     [self registerForKeyboardNotifications];
+    // Create request for user's Facebook data
+    FBRequest *request = [FBRequest requestForMe];
+    
+    // Send request to Facebook
+    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        // handle response
+    }];
 //    FBLoginView *loginView = [[FBLoginView alloc] init];
 //    loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 100);
 //    [self.view addSubview:loginView];
