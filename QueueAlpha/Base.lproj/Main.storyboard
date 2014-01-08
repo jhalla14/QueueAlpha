@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dvg-Hv-3HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KNu-J9-7MM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="EaN-MA-zjV">
+            <objects>
+                <viewController id="KNu-J9-7MM" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="peu-ao-8Iw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ky4-Hf-51p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p4X-xm-E4a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1P-CR-cb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980" y="-776"/>
+        </scene>
         <!--Start Up View Controller - Queue-->
         <scene sceneID="Nsf-gU-tKi">
             <objects>
@@ -25,11 +43,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </activityIndicatorView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAh-mP-E2c" customClass="FBLoginView">
-                                        <rect key="frame" x="44" y="286" width="232" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -45,8 +58,6 @@
                     <navigationItem key="navigationItem" title="Queue" id="lQV-F7-hor"/>
                     <connections>
                         <outlet property="activityIndicator" destination="c7r-G4-YEK" id="R2z-2w-kIk"/>
-                        <outlet property="loginButton" destination="hAh-mP-E2c" id="GuX-Kx-EUL"/>
-                        <outlet property="loginButtonTouch" destination="hAh-mP-E2c" id="Ret-DC-ivk"/>
                         <outlet property="scrollView" destination="fO4-uL-bZL" id="RZH-Oc-cFT"/>
                     </connections>
                 </viewController>
